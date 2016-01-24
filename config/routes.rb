@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'excerpts/index'
+  get 'excerpts/show'
+
+  get 'chapters/index'
+  get 'chapters/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
