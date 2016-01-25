@@ -1,0 +1,9 @@
+<h1><%= @chapter.book.name %> - <%= @chapter.number %></h1>
+<p>
+  <%- @chapter.verses.each do |verse| %>
+    <span class="verse">
+      <a class="verse__number" href="#<%= verse.number %>"><%= verse.number %></a>
+      <span class="verse__text"><%= verse.verse_versions.find_by_version_id(1).content %></span>
+    </span>
+  <%- end %>
+</p>

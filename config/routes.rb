@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   get 'excerpts/show'
 
   get 'chapters/index'
-  get 'chapters/show'
+  get 'book/:book_number/chapters/:chapter_number/read', to: 'chapters#read', as: 'chapter_read'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'chapters#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

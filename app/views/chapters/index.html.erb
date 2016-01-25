@@ -1,0 +1,13 @@
+<h1>Select a Book / Chapter</h1>
+
+<ul>
+  <%- @books.each do |book| %>
+    <li><%= book.name %>
+      <ul>
+        <%- book.chapters.each do |chapter| %>
+          <li><a href="<%= chapter_read_path(book.number, chapter.number) %>"><%= chapter.number %></a></li>
+        <%- end %>
+      </ul>
+    </li>
+  <%- end %>
+</ul>

@@ -19,6 +19,8 @@ namespace :db do
 
     book_index = 1
 
+    # TODO: make the creation of Book, Chapter and Verse idempotent.
+    # We don't want multiple versions of these objects in the db.
     bible[:Testaments].each do |t|
       t[:Books].each do |book|
         puts "#{book_index} : #{book[:Text]}"
