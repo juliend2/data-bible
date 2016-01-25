@@ -1,20 +1,45 @@
 <h1><%= @chapter.book.name %> - Chapter <%= @chapter.number %></h1>
 
+<%- colors_map = {} %>
+<%- colors = excerpt_colors %>
 <div class="reader">
   <p class="js-chapter  chapter">
     <%- @chapter.verses.each do |verse| %>
-      <span class="js-verse  verse">
+      <span class="js-verse  verse"><%- if verse.starts_an_excerpt? %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
+              href="#"
+              class="excerpt-start"
+              style="color: #<%= color %>;">[</a><%- end %><%- end %>
         <sup>
-          <a class="js-verse__number  verse__number" href="#<%= verse.number %>" data-version_slug="<%= @version.slug %>" data-book_number="<%= @chapter.book.number %>" data-chapter_number="<%= @chapter.number %>" data-verse_number="<%= verse.number %>">
+          <a
+            class="js-verse__number  verse__number"
+            href="#<%= verse.number %>"
+            data-version_slug="<%= @version.slug %>"
+            data-book_number="<%= @chapter.book.number %>"
+            data-chapter_number="<%= @chapter.number %>"
+            data-verse_number="<%= verse.number %>">
             <%= verse.number %></a>
         </sup>
         <span class="js-verse__text  verse__text"><%= verse.verse_versions.find_by_version_id(@version.id).content %></span>
+        <%- if verse.ends_an_excerpt? %>
+          <%- verse.excerpts_with_verse_as_last.each do |ex| %><%- color = colors_map[ex.id] %><a
+              href="#"
+              class="excerpt-end"
+              style="color: #<%= color %>;">]</a><%- end %>
+        <%- end %>
       </span>
     <%- end %>
   </p>
 </div>
 
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
+  <h2>
+    Tags in this chapter:
+  </h2>
+  <p class="tags-in-chapter">
+    <%- @chapter_tags.each do |tag| %>
+      <a href="#" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
+    <%- end %>
+  </p>
   <h2>Tags for these verses:</h2>
   <p class="js-excerpt-edit__preview"></p>
   <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
