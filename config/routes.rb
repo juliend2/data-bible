@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'chapters/index'
   get 'book/:book_number/chapters/:chapter_number/read', to: 'chapters#read', as: 'chapter_read'
+  get 'excerpts/:id/tags', to: 'excerpts#tags', as: 'excerpt_tags'
 
   post 'tags/assign', to: 'tags#assign', as: 'tags_assign'
 

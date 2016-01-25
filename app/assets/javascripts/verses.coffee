@@ -5,6 +5,31 @@
 window.App ||= {}
 
 selected_verses = []
+selected_excerpt_id = null
+
+class TagsInExcerpt
+  constructor: ()->
+    $(window.App).bind('excerpts:selected', @update)
+
+  update: ()=>
+    console.log('selected_excerpt_id', selected_excerpt_id)
+    $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
+      $('.tags-in-excerpt').html(data.map((tag)-> "<a href='#'>#{tag.name}</a>").join(' '))
+
+class Excerpts
+  constructor: ()->
+    @jq_elements = $('.js-excerpt-start, .js-excerpt-end')
+    @jq_elements.on 'click', (e)=>
+      e.preventDefault()
+      id = $(e.target).data('excerpt_id')
+      color = $(e.target).data('excerpt_color')
+      selected_excerpt_id = id
+      @reset_all_colors()
+      $(".js-in-excerpt-#{id}").css(backgroundColor: "##{color}")
+      $(window.App).trigger('excerpts:selected')
+
+  reset_all_colors: ()->
+    $('.js-verse__text').css(backgroundColor: 'initial')
 
 class ExcerptEdit
   constructor: (@version_slug, @book_number, @chapter_number, @verse_numbers)->
@@ -79,5 +104,7 @@ class App.Verses
   constructor: ()->
     excerptEditor = new ExcerptEdit()
     highlights = new Highlights()
+    excerpts = new Excerpts()
+    tags_in_excerpt = new TagsInExcerpt()
     $('.js-verse').each ()->
       verse = new Verse($(this))

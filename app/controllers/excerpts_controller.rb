@@ -4,4 +4,8 @@ class ExcerptsController < ApplicationController
 
   def show
   end
+
+  def tags
+    render json: Excerpt.find(params[:id]).tags
+  end
 end

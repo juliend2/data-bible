@@ -7,7 +7,9 @@
     <%- @chapter.verses.each do |verse| %>
       <span class="js-verse  verse"><%- if verse.starts_an_excerpt? %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
               href="#"
-              class="excerpt-start"
+              data-excerpt_id="<%= ex.id %>"
+              data-excerpt_color="<%= color %>"
+              class="js-excerpt-start  excerpt-start"
               style="color: #<%= color %>;">[</a><%- end %><%- end %>
         <sup>
           <a
@@ -19,11 +21,14 @@
             data-verse_number="<%= verse.number %>">
             <%= verse.number %></a>
         </sup>
-        <span class="js-verse__text  verse__text"><%= verse.verse_versions.find_by_version_id(@version.id).content %></span>
+        <span
+          class="js-verse__text  verse__text <%= verse.excerpt_ids.map{|ei| "js-in-excerpt-#{ei}" }.join(' ') %>"><%= verse.verse_versions.find_by_version_id(@version.id).content %></span>
         <%- if verse.ends_an_excerpt? %>
           <%- verse.excerpts_with_verse_as_last.each do |ex| %><%- color = colors_map[ex.id] %><a
               href="#"
-              class="excerpt-end"
+              data-excerpt_id="<%= ex.id %>"
+              data-excerpt_color="<%= color %>"
+              class="js-excerpt-end  excerpt-end"
               style="color: #<%= color %>;">]</a><%- end %>
         <%- end %>
       </span>
@@ -33,7 +38,12 @@
 
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
   <h2>
-    Tags in this chapter:
+    Tags in this Excerpt:
+  </h2>
+  <p class="tags-in-excerpt">
+  </p>
+  <h2>
+    Tags in this Chapter:
   </h2>
   <p class="tags-in-chapter">
     <%- @chapter_tags.each do |tag| %>

@@ -5,6 +5,10 @@ class Verse < ActiveRecord::Base
   has_many :verse_versions
   has_many :versions, through: :verse_versions
 
+  def excerpt_ids
+    self.excerpts.map(&:id)
+  end
+
   def excerpts_with_verse_as_first
     excerpts_with_verse = self.excerpts.select{|ex| ex.verses.order(:number).first.id == self.id }
   end
