@@ -17,6 +17,8 @@
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
   <h2>Tags for these verses:</h2>
   <p class="js-excerpt-edit__preview"></p>
+  <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
+  <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
   <p>
     <select class="js-excerpt-edit__tags  excerpt-edit__tags" multiple="multiple">
       <%- @tags.each do |tag| %>

@@ -26,11 +26,17 @@ class ExcerptEdit
     @init_events()
 
   init_events: ()->
-    @jq_element.on 'submit', (e)->
+    @jq_element.on 'submit', (e)=>
       e.preventDefault()
       console.log('submit')
-      console.log('tags', @jq_element.find('.js-excerpt-edit__tags').val())
-      console.log('verses', @jq_element.find('.js-excerpt-edit__preview').text())
+      tags = @jq_element.find('.js-excerpt-edit__tags').val()
+      book = @jq_element.find('.js-excerpt-edit__book').val()
+      chapter = @jq_element.find('.js-excerpt-edit__chapter').val()
+      verses = @jq_element.find('.js-excerpt-edit__preview').text().split(', ')
+      console.log('tags', tags, 'verses', verses)
+      $.post $(e.target).attr('action'),
+        {tags: tags, book: book, chapter: chapter, verses: verses},
+        ((data, textStatus, jqXHR)=> console.log(data))
 
   handle_selected_verses: ()=>
     console.log('handle selected verse')
