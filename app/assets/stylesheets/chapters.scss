@@ -1,3 +1,23 @@
 // Place all the styles related to the chapters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reader {
+  width: 68%;
+  float: left;
+}
+
+.selected {
+  background: yellow;
+}
+
+.excerpt-edit {
+  width: 30%;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.excerpt-edit__tags {
+  width: 300px;
+}
