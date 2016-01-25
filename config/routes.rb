@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'chapters/index'
   get 'book/:book_number/chapters/:chapter_number/read', to: 'chapters#read', as: 'chapter_read'
 
+  post 'tags/assign', to: 'tags#assign', as: 'tags_assign'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

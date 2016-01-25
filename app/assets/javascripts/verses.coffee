@@ -9,14 +9,28 @@ selected_verses = []
 class ExcerptEdit
   constructor: (@version_slug, @book_number, @chapter_number, @verse_numbers)->
     @jq_element = $('.js-excerpt-edit')
-    @jq_element.find('.js-excerpt-edit__tags').chosen()
+    select = @jq_element.find('.js-excerpt-edit__tags')
+    select.chosen()
+
+    # Hack from: http://stackoverflow.com/a/24961779/242404
+    select.next('.chosen-container').find('input').on 'keydown', (evt) ->
+      # console.log('keyDown', evt.keyCode)
+      _ref = evt.which
+      stroke = if _ref isnt null then _ref else evt.keyCode
+      if stroke is 188 # 9 is TAB, 188 is COMMA
+        select.append('<option value="'+$(this).val()+'" selected="selected">'+$(this).val()+'</option>')
+        select.trigger('chosen:updated')
+        return false # prevent the comma from being inserted in the field
+
     $(window.App).bind('selected_verses:changed', @handle_selected_verses)
     @init_events()
 
   init_events: ()->
     @jq_element.on 'submit', (e)->
       e.preventDefault()
-      console.log(@jq_element.find('.js-excerpt-edit__tag-name').val())
+      console.log('submit')
+      console.log('tags', @jq_element.find('.js-excerpt-edit__tags').val())
+      console.log('verses', @jq_element.find('.js-excerpt-edit__preview').text())
 
   handle_selected_verses: ()=>
     console.log('handle selected verse')
