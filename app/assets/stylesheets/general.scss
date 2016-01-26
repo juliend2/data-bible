@@ -1,0 +1,49 @@
+nav ul li {
+  float: left;
+  list-style: none;
+  margin-right: 20px;
+}
+
+nav {
+  clear: both;
+}
+
+h1 {
+  clear: both;
+  float: left;
+  margin-top: 20px;
+}
+
+// /
+.chapters {
+  clear: both;
+}
+.chapters >li {
+  clear: both;
+  float: left;
+}
+.chapters >li >ul {
+  clear: both;
+  list-style: none;
+  // float: left;
+}
+.chapters li ul li {
+  float: left;
+}
+.chapters li ul li a {
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid black;
+  min-width: 18px;
+  text-align: center;
+  text-decoration: none;
+}
+.chapters li ul li a:hover {
+  background: yellow;
+}
+
+// /book/6/chapters/22/read
+.reader {
+  clear: both;
+  float: left;
+}
