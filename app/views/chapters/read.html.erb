@@ -38,17 +38,17 @@
 
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
   <h2>
-    Tags in this Excerpt:
-  </h2>
-  <p class="tags-in-excerpt">
-  </p>
-  <h2>
     Tags in this Chapter:
   </h2>
   <p class="tags-in-chapter">
     <%- @chapter_tags.each do |tag| %>
-      <a href="#" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
+      <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
     <%- end %>
+  </p>
+  <h2>
+    Tags in this Excerpt:
+  </h2>
+  <p class="tags-in-excerpt">
   </p>
   <h2>Tags for these verses:</h2>
   <p class="js-excerpt-edit__preview"></p>

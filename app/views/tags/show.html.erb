@@ -1,0 +1,10 @@
+<h1>Excerpts with tag '<%= @tag.name %>'</h1>
+
+<%- @excerpts_with_text.each do |excerpt| %>
+  <hr/>
+  <p>
+    <%- excerpt.each do |verse| %>
+      <a href="<%= verse[:path] %>#<%= verse[:verse_number] %>"><%= verse[:verse_number] %> <%= verse[:text] %></a><br/>
+    <%- end %>
+  </p>
+<%- end %>

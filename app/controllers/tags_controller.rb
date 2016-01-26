@@ -2,6 +2,24 @@ class TagsController < ApplicationController
   def index
   end
 
+  def show
+    @tag = Tag.find(params[:id])
+    version = Version.find_by_slug('SG21')
+    excerpts = @tag.excerpts
+    @excerpts_with_text = []
+    excerpts.each do |excerpt|
+      chapter = excerpt.verses.first.chapter
+      book = chapter.book
+      path = Rails.application.routes.url_helpers.chapter_read_path(book.number, chapter.number)
+      @excerpts_with_text << excerpt.verses.map{|ver|
+        text = VerseVersion.where(verse_id: ver.id, version_id: version.id).first.content
+        verse_number = ver.number
+        {path: path, verse_number: verse_number, text: text}
+      }
+    end
+    @excerpts_with_text
+  end
+
   def assign
     book = Book.find_by_number(params[:book])
     chapter = book.chapters.find_by_number(params[:chapter])
