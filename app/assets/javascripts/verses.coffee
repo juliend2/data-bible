@@ -23,10 +23,13 @@ class Excerpts
       e.preventDefault()
       id = $(e.target).data('excerpt_id')
       color = $(e.target).data('excerpt_color')
-      selected_excerpt_id = id
       @reset_all_colors()
-      $(".js-in-excerpt-#{id}").css(backgroundColor: "##{color}")
-      $(window.App).trigger('excerpts:selected')
+      if selected_excerpt_id == id
+        selected_excerpt_id = null
+      else
+        selected_excerpt_id = id
+        $(".js-in-excerpt-#{id}").css(backgroundColor: "##{color}")
+        $(window.App).trigger('excerpts:selected')
 
   reset_all_colors: ()->
     $('.js-verse__text').css(backgroundColor: 'initial')
