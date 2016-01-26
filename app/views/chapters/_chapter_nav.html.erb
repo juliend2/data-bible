@@ -1,0 +1,14 @@
+<table width="100%">
+  <tr>
+    <td>
+      <%- if @chapter.number != 1 %>
+        <a href="<%= chapter_read_path(@book.number, @chapter.number - 1) %>">&lt; Previous</a>
+      <%- end %>
+    </td>
+    <td align="right">
+      <%- if @chapter.number != @book.chapters.size %>
+        <a href="<%= chapter_read_path(@book.number, @chapter.number + 1) %>">Next &gt;</a>
+      <%- end %>
+    </td>
+  </tr>
+</table>

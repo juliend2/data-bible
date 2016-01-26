@@ -3,6 +3,7 @@
 <%- colors_map = {} %>
 <%- colors = excerpt_colors %>
 <div class="reader content">
+  <%= render partial: 'chapter_nav', locals: {book: @book, chapter: @chapter} %>
   <p class="js-chapter  chapter">
     <%- @chapter.verses.each do |verse| %>
       <span class="js-verse  verse"><%- if verse.starts_an_excerpt? %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
@@ -35,6 +36,7 @@
       </span>
     <%- end %>
   </p>
+  <%= render partial: 'chapter_nav', locals: {book: @book, chapter: @chapter} %>
 </div>
 
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
