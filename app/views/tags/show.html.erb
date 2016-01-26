@@ -1,5 +1,6 @@
 <h1>Excerpts with tag '<%= @tag.name %>'</h1>
 
+<div class="content">
 <%- @excerpts_with_text.each do |excerpt| %>
   <hr/>
   <p>
@@ -8,3 +9,4 @@
     <%- end %>
   </p>
 <%- end %>
+</div>

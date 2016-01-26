@@ -1,6 +1,6 @@
 <h1>Tags</h1>
 
-<ul>
+<ul class="content">
   <%- @tags.each do |tag| %>
     <li><a href="<%= tags_show_path(tag) %>"><%= tag.name %> (<%= tag.excerpts.size %>)</a></li>
   <%- end %>

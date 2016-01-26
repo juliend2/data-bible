@@ -13,6 +13,10 @@ h1 {
   float: left;
   margin-top: 20px;
 }
+.content {
+  clear: both;
+  float: left;
+}
 
 // /
 .chapters {
@@ -43,7 +47,3 @@ h1 {
 }
 
 // /book/6/chapters/22/read
-.reader {
-  clear: both;
-  float: left;
-}
