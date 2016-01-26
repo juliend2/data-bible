@@ -18,10 +18,16 @@ h1 {
   float: left;
   margin-top: 20px;
 }
+sup {
+  vertical-align: baseline;
+  position: relative;
+  top: -.5em;
+}
 .content {
   clear: both;
   float: left;
 }
+
 
 // /
 .chapters {
@@ -52,3 +58,6 @@ h1 {
 }
 
 // /book/6/chapters/22/read
+.chapter {
+  line-height: 1.5em;
+}
