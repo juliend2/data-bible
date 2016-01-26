@@ -14,7 +14,7 @@ class TagsInExcerpt
   update: ()=>
     console.log('selected_excerpt_id', selected_excerpt_id)
     $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
-      $('.tags-in-excerpt').html(data.map((tag)-> "<a href='#'>#{tag.name}</a>").join(' '))
+      $('.tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
 
 class Excerpts
   constructor: ()->
