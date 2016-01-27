@@ -10,11 +10,15 @@ selected_excerpt_id = null
 class TagsInExcerpt
   constructor: ()->
     $(window.App).bind('excerpts:selected', @update)
+    $(window.App).bind('excerpts:unselected', @update)
 
   update: ()=>
     console.log('selected_excerpt_id', selected_excerpt_id)
-    $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
-      $('.tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
+    if selected_excerpt_id is null
+      $('.tags-in-excerpt').html("<i>Please select an excerpt</i>")
+    else
+      $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
+        $('.tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
 
 class Excerpts
   constructor: ()->
@@ -26,6 +30,7 @@ class Excerpts
       @reset_all_colors()
       if selected_excerpt_id == id
         selected_excerpt_id = null
+        $(window.App).trigger('excerpts:unselected')
       else
         selected_excerpt_id = id
         $(".js-in-excerpt-#{id}").css(backgroundColor: "##{color}")
