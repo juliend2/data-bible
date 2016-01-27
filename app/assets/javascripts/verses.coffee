@@ -70,6 +70,10 @@ class ExcerptEdit
       $.post $(e.target).attr('action'),
         {tags: tags, book: book, chapter: chapter, verses: verses},
         ((data, textStatus, jqXHR)=> console.log(data))
+    $('.js-excerpt-delete').on 'click', (e)=>
+      e.preventDefault()
+      $.post "/excerpts/#{selected_excerpt_id}/delete", (data)=>
+        console.log('data', data)
 
   handle_selected_verses: ()=>
     console.log('handle selected verse')
