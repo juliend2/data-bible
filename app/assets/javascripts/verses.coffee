@@ -37,7 +37,7 @@ class Excerpts
         $(window.App).trigger('excerpts:selected')
 
   reset_all_colors: ()->
-    $('.js-verse__text').css(backgroundColor: 'initial')
+    $('.js-verse__text').css(backgroundColor: 'initial', color: 'black')
 
 class ExcerptEdit
   constructor: (@version_slug, @book_number, @chapter_number, @verse_numbers)->
