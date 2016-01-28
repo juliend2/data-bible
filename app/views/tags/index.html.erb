@@ -2,6 +2,10 @@
 
 <ul class="content">
   <%- @tags.each do |tag| %>
-    <li><a href="<%= tags_show_path(tag) %>"><%= tag.name %> (<%= tag.excerpts.size %>)</a></li>
+    <li>
+      <a href="<%= tags_show_path(tag) %>"><%= tag.name %> (<%= tag.excerpts.size %>)</a>
+      -
+      <a href="<%= tag_delete_path(tag) %>" onclick="return confirm('Are you sure?')">Delete</a>
+    </li>
   <%- end %>
 </ul>

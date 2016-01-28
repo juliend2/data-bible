@@ -44,4 +44,9 @@ class TagsController < ApplicationController
       render json: {status: 'error'}
     end
   end
+
+  def delete
+    Tag.find(params[:id]).destroy
+    redirect_to tags_index_url
+  end
 end
