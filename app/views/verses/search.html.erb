@@ -1,4 +1,13 @@
-<h1>Search results for '<%= @query %>'</h1>
+<%- if @query %>
+  <h1>Found <%= @verse_versions.size %> verses with '<%= @query %>'</h1>
+<%- else %>
+  <h1>Search</h1>
+<%- end %>
+
+<form method="get" action="<%= verse_search_path %>" class="content">
+  <input type="text" name="query" />
+  <input type="submit" value="Search" />
+</form>
 
 <dl class="content">
   <%- @verse_versions.each do |verse_version| %>
