@@ -1,0 +1,17 @@
+<h1>Search results for '<%= @query %>'</h1>
+
+<dl class="content">
+  <%- @verse_versions.each do |verse_version| %>
+    <%- verse = verse_version.verse %>
+    <%- chapter = verse.chapter %>
+    <%- book = chapter.book %>
+    <dt>
+      <a href="<%= chapter_read_path(book.number, chapter.number) %>#verse-<%= verse.number %>">
+        <%= book.name %> <%= chapter.number %>:<%= verse_version.verse.number %>
+      </a>
+    </dt>
+    <dd>
+    <%= raw verse_version.content.gsub(@query, "<mark>#{@query}</mark>") %>
+    </dd>
+  <%- end %>
+</dl>

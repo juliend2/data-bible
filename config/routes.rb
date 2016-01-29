@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'tags/assign', to: 'tags#assign', as: 'tags_assign'
   get 'tags/:id/delete', to: 'tags#delete', as: 'tag_delete'
 
+  get 'verses', to: 'verses#search', as: 'verse_search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
