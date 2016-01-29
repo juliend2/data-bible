@@ -5,7 +5,7 @@
   <hr/>
   <p>
     <%- excerpt.each do |verse| %>
-      <a href="<%= verse[:path] %>#verse-<%= verse[:verse_number] %>"><%= verse[:verse_number] %> <%= verse[:text] %></a><br/>
+      <a href="<%= verse[:path] %>#verse-<%= verse[:verse_number] %>"><%= verse[:chapter].book.name %> <%= verse[:chapter].number %>:<%= verse[:verse_number] %> <%= verse[:text] %></a><br/>
     <%- end %>
   </p>
 <%- end %>

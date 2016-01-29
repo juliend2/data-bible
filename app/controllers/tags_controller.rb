@@ -15,7 +15,8 @@ class TagsController < ApplicationController
       @excerpts_with_text << excerpt.verses.map{|ver|
         text = VerseVersion.where(verse_id: ver.id, version_id: version.id).first.content
         verse_number = ver.number
-        {path: path, verse_number: verse_number, text: text}
+        chapter = ver.chapter
+        {path: path, verse_number: verse_number, chapter: chapter, text: text}
       }
     end
     @excerpts_with_text
