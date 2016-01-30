@@ -69,7 +69,7 @@ class ExcerptEdit
       console.log('tags', tags, 'verses', verses)
       $.post $(e.target).attr('action'),
         {tags: tags, book: book, chapter: chapter, verses: verses},
-        ((data, textStatus, jqXHR)=> console.log(data))
+        ((data, textStatus, jqXHR)=> $(window.App).trigger('excerpt:created'))
     $('.js-excerpt-delete').on 'click', (e)=>
       e.preventDefault()
       $.post "/excerpts/#{selected_excerpt_id}/delete", (data)=>
@@ -83,6 +83,7 @@ class Highlights
   constructor: ()->
     console.log('highlight')
     $(window.App).bind('selected_verses:changed', @handle_selected_verses)
+    $(window.App).bind('excerpt:created', @handle_excerpt_created)
     $('.js-verse__text').on 'click', (e)-> $(this).prev('sup').find('.js-verse__number').triggerHandler('click')
 
   handle_selected_verses: ()=>
@@ -92,6 +93,11 @@ class Highlights
         $(this).addClass('selected')
       else
         $(this).removeClass('selected')
+
+  handle_excerpt_created: ()=>
+    console.log('handle_excerpt_created')
+    selected_verses = []
+    $(window.App).trigger('selected_verses:changed')
 
 class Verse
   constructor: (jq_element)->
