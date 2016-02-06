@@ -85,18 +85,22 @@ sup {
   display: inline-block;
   margin: 10px;
   line-height: 2rem;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+.word-cloud a {
+  text-decoration: none;
 }
 .word-cloud .x-small {
   font-size: 1em;
-  font-weight: 100;
+  font-weight: 200;
 }
 .word-cloud .small {
   font-size: 1.5em;
-  font-weight: 200;
+  font-weight: 300;
 }
 .word-cloud .medium {
   font-size: 2em;
-  font-weight: 300;
+  font-weight: 400;
 }
 .word-cloud .large {
   font-size: 2.5em;

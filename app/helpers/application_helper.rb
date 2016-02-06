@@ -21,7 +21,7 @@ module ApplicationHelper
                    when large...x_large then 'x-large'
                    else 'xx-large'
                    end
-      html += "<li class='#{size_class}'>" + word + "</li>"
+      html += "<li class='#{size_class}'><a href='/verses?query=#{word}'>" + word + "</a></li>"
     end
     html += "</ul>"
     html

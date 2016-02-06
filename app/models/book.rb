@@ -19,10 +19,11 @@ class Book < ActiveRecord::Base
       toi ce où lui dit qui est moi toi était avait
       tous tout toute toutes
       donc ainsi même suis eux aux ou ni afin
-      cela cet cette ces ceux celles celui
+      cela cet cette ces ceux celles celui parmi autre quoi autres autre
       plus puis encore sera où cest mais deux cette quand ans comme dont pourquoi répondit quant
-      ai eut commit prit appela donna fait fit fut vis vit ont leva fais faire mit dis avez dirent être avoir été jai aura donne sont soit avons avaient feras fera peut sais
-      le me on te car si ta là alors aussi as jusqu parce aujourd hui fois lorsque
+      étaient ai aurais eut commit prit appela donna fait fit fut vis vit ont leva fais faire mit dis avez dirent être avoir été jai aura donne sont soit avons avaient feras fera peut sais rendons rendu
+      êtes seront ferai aucun seront parlait déclare
+      le me on te car si ta là alors aussi as jusqu parce aujourd hui fois lorsque quelqu
       000 pause
     ] + (1..9).to_a + ('a'..'z').to_a + [""]).flatten.map(&:to_s).uniq
     vv = Rails.cache.fetch("#{cache_key}/verse_content", expires_in: 12.hours) {
