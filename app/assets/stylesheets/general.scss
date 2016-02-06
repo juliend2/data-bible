@@ -61,3 +61,48 @@ sup {
 .chapter {
   line-height: 1.5em;
 }
+
+
+// /word-count
+.word-clouds .book {
+  float: left;
+  clear: both;
+}
+.word-cloud-for-book {
+  clear: both;
+}
+
+.word-cloud {
+  clear: both;
+  max-width: 500px;
+}
+
+.word-cloud li {
+  list-style: none;
+  display: inline-block;
+  margin: 10px;
+}
+.word-cloud .x-small {
+  font-size: 1em;
+  font-weight: 100;
+}
+.word-cloud .small {
+  font-size: 1.5em;
+  font-weight: 200;
+}
+.word-cloud .medium {
+  font-size: 2em;
+  font-weight: 300;
+}
+.word-cloud .large {
+  font-size: 2.5em;
+  font-weight: 500;
+}
+.word-cloud .x-large {
+  font-size: 3em;
+  font-weight: 700;
+}
+.word-cloud .xx-large {
+  font-size: 3.5em;
+  font-weight: 900;
+}
