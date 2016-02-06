@@ -98,6 +98,10 @@ class Highlights
     console.log('handle_excerpt_created')
     selected_verses = []
     $(window.App).trigger('selected_verses:changed')
+    select = $('.js-excerpt-edit__tags')
+    select.find('option').each ()->
+      $(this).prop('selected', false)
+    select.trigger('chosen:updated')
 
 class Verse
   constructor: (jq_element)->
