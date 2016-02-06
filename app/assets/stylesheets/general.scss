@@ -64,9 +64,11 @@ sup {
 
 
 // /word-count
+
 .word-clouds .book {
   float: left;
   clear: both;
+  margin-top: 2rem;
 }
 .word-cloud-for-book {
   clear: both;
@@ -74,13 +76,15 @@ sup {
 
 .word-cloud {
   clear: both;
-  max-width: 500px;
+  max-width: 600px;
+  text-align: center;
 }
 
 .word-cloud li {
   list-style: none;
   display: inline-block;
   margin: 10px;
+  line-height: 2rem;
 }
 .word-cloud .x-small {
   font-size: 1em;
