@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'tags/:id/delete', to: 'tags#delete', as: 'tag_delete'
 
   get 'verses', to: 'verses#search', as: 'verse_search'
+  get 'word-cloud', to: 'verses#word_cloud', as: 'word_cloud'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,4 +7,8 @@ class VersesController < ApplicationController
       @verse_versions = []
     end
   end
+
+  def word_cloud
+    @books = Book.all
+  end
 end

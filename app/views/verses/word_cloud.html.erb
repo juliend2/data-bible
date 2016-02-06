@@ -1,0 +1,14 @@
+<h1>Word cloud</h1>
+
+<dl class="content">
+<%- @books.each do |book| %>
+  <dt><%= book.name %></dt>
+  <dd>
+    <ul>
+      <%- book.words_by_popularity.each do |word, frequency| %>
+        <li><%= word %>: <%= frequency %></li>
+      <%- end %>
+    </ul>
+  </dd>
+<%- end %>
+</dl>
