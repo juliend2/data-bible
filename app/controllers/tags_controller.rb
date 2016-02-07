@@ -5,7 +5,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    version = Version.find_by_slug('SG21')
+    version = current_version
     excerpts = @tag.excerpts
     @excerpts_with_text = []
     excerpts.each do |excerpt|

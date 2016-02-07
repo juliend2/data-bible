@@ -4,6 +4,8 @@ class ChaptersController < ApplicationController
   end
 
   def read
+    session[:return_to] ||= request.referer
+    @available_versions = Version.all
     @book = Book.find_by_number(params[:book_number])
     @chapter = @book.chapters.find_by_number(params[:chapter_number])
     @chapter_excerpts = @chapter.excerpts
@@ -12,7 +14,11 @@ class ChaptersController < ApplicationController
       map{|excerpt| excerpt.tags }.
       flatten.
       uniq{|t| t.id}
-    @version = Version.find_by_slug('SG21')
+    @version = current_version
+    unless @version
+      flash[:notice] = "Please choose a Bible version"
+      redirect_to choose_version_path
+    end
     @tags = Tag.all
   end
 end

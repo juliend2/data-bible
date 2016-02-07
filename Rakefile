@@ -11,11 +11,11 @@ desc "Run the seed"
 namespace :db do
   task :seed do
     json_path = ENV['JSON_PATH']
-    version_id = ENV['VERSION_ID']
+    version_slug = ENV['VERSION_SLUG']
 
     json_text = File.read json_path
     bible = JSON.parse json_text, symbolize_names: true
-    version = Version.find(version_id)
+    version = Version.where(slug: version_slug).first
 
     book_index = 1
 
@@ -23,7 +23,7 @@ namespace :db do
       t[:Books].each do |book|
         puts "#{book_index} : #{book[:Text]}"
         bk = begin
-               bk = Book.where(name: book[:Text], number: book_index).first
+               bk = Book.where(number: book_index).first
                unless bk
                  bk = Book.new(name: book[:Text], number: book_index)
                  bk.save
@@ -74,5 +74,5 @@ end
 # ExcerptVerse.destroy_all
 # Excerpt.destroy_all
 #
-# env JSON_PATH=./db/seed_data/seg21-formatted.json VERSION_ID=1 rake db:seed
-# env JSON_PATH=./db/seed_data/french_louis_segond_1910.json VERSION_ID=2 rake db:seed
+# env JSON_PATH=./db/seed_data/seg21-formatted.json VERSION_SLUG=SG21 rake db:seed
+# env JSON_PATH=./db/seed_data/louis-segond-formatted.json VERSION_SLUG=LSG rake db:seed

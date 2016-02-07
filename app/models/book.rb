@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   has_many :chapters
 
-  def words_by_popularity
+  def words_by_popularity(version)
     max_word_per_book = 20
     words = []
     excluded_words = (%w[
@@ -27,7 +27,7 @@ class Book < ActiveRecord::Base
       000 pause
     ] + (1..9).to_a + ('a'..'z').to_a + [""]).flatten.map(&:to_s).uniq
     vv = Rails.cache.fetch("#{cache_key}/verse_content", expires_in: 12.hours) {
-      version = Version.find_by_slug('SG21')
+      version = version
       VerseVersion.find_by_sql(<<-EOSQL)
         SELECT  verse_versions.content
         FROM    verse_versions

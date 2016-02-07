@@ -4,7 +4,7 @@
 <%- @books.each do |book| %>
   <dt class="book"><%= book.name %></dt>
   <dd class="word-cloud-for-book">
-    <%= raw word_cloud(book.words_by_popularity) %>
+    <%= raw word_cloud(book.words_by_popularity(current_version)) %>
   </dd>
 <%- end %>
 </dl>

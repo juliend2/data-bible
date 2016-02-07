@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'verses', to: 'verses#search', as: 'verse_search'
   get 'word-cloud', to: 'verses#word_cloud', as: 'word_cloud'
 
+  get 'versions', to: 'versions#choose_version', as: 'choose_version'
+  post 'set_version', to: 'versions#set_version', as: 'set_version'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
