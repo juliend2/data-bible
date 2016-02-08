@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   def current_version
     if session[:current_version_id]
       @current_version ||= session[:current_version_id] && Version.find(session[:current_version_id])
+    else
+      Version.first
     end
   end
   helper_method :current_version
