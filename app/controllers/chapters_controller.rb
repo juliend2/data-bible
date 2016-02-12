@@ -4,7 +4,6 @@ class ChaptersController < ApplicationController
   end
 
   def read
-    session[:return_to] ||= request.referer
     @available_versions = Version.all
     @book = Book.find_by_number(params[:book_number])
     @chapter = @book.chapters.find_by_number(params[:chapter_number])

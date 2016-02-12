@@ -1,16 +1,40 @@
-body {
-  max-width: 1000px;
-  margin: 0 auto;
+/*
+
+TABLE OF CONTENTS:
+
+general
+url-based:
+  / (reader)
+  /book/6/chapters/22/read
+  /word-count
+
+*/
+
+@mixin border-box {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-nav ul li {
-  float: left;
-  list-style: none;
-  margin-right: 20px;
+// general
+
+body {
+  max-width: 1000px;
+  margin: 0 auto !important;
+  padding: 0 10px;
+  background: #E8E8E8;
 }
 
 nav {
   clear: both;
+}
+nav ul {
+  padding: 0;
+}
+nav ul li {
+  float: left;
+  list-style: none;
+  margin-right: 17px;
 }
 
 h1 {
@@ -33,8 +57,9 @@ sup {
 .content {
   clear: both;
   float: left;
+  background: white;
+  @include border-box;
 }
-
 
 // /
 .chapters {
@@ -64,11 +89,49 @@ sup {
   background: yellow;
 }
 
+// READER
 // /book/6/chapters/22/read
+
+:target {
+  background: black;
+  color: white;
+}
+
 .chapter {
   line-height: 1.5em;
 }
 
+.content.reader {
+  padding: 10px;
+  width: 68%;
+  float: left;
+}
+
+// TOOLBOX
+
+.selected {
+  background: yellow;
+}
+
+.excerpt-edit {
+  width: 30%;
+  right: 0;
+  top: 0;
+  overflow-y: scroll;
+  @include border-box;
+  padding: 10px;
+}
+
+.excerpt-edit__tags {
+  width: 300px;
+}
+
+.excerpt-start, .excerpt-end {
+  font-weight: bold;
+  background: black;
+  padding: 0 1px;
+  text-decoration: none;
+}
 
 // /word-count
 
