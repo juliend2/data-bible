@@ -115,8 +115,10 @@ sup {
 
 .excerpt-edit {
   width: 30%;
+  height: 95vh;
   right: 0;
   top: 0;
+  overflow-x: hidden;
   overflow-y: scroll;
   @include border-box;
   padding: 10px;
