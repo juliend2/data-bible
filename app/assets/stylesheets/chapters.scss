@@ -18,9 +18,11 @@
 
 .excerpt-edit {
   width: 30%;
-  position: fixed;
+  // position: fixed;
   right: 0;
   top: 0;
+  overflow-y: scroll;
+  // min-height: 900px;
 }
 
 .excerpt-edit__tags {
