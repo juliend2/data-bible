@@ -10,7 +10,7 @@ est Libre ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)).
 
 ## Installation
 
-1. `git clone git@github.com:juliend2/codex-liberatus.git`
+1. `git clone https://github.com/juliend2/codex-liberatus.git`
 2. `cd codex-liberatus`
 3. `bundle install`
 4. `rake db:migrate`
