@@ -10,11 +10,36 @@ url-based:
 
 */
 
+$background_color: #E8E8E8;
+
+// source: http://stackoverflow.com/a/7354648/242404
+$mobile-screen: 690px;
+$tablet-screen: 995px;
+$desktop-screen: 1440px;
+
+$screen: "only screen";
+$mobile: "only screen and (max-width:#{$mobile-screen})";
+$tablet: "only screen and (min-width:#{$mobile-screen}) and (max-width: #{$tablet-screen})";
+$desktop: "only screen and (min-width:#{$tablet-screen})";
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
+
+
 @mixin border-box {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+@mixin nice-links($bg_color: #ffffff) {
+  background-image: linear-gradient(to top,$bg_color 0%,$bg_color 49%,#000 50%,#000 100%);
+  background-size: 2px 2px;
+  background-repeat: repeat-x;
+  background-position: 0 97.5%;
+  text-shadow: 0.03em 0 $bg_color,-0.03em 0 $bg_color,0.05em 0 $bg_color,-0.05em 0 $bg_color,0.09em 0 $bg_color,-0.075em 0 $bg_color;
+  text-decoration: none;
+}
+
 
 // general
 
@@ -22,7 +47,7 @@ body {
   max-width: 1000px;
   margin: 0 auto !important;
   padding: 0 10px;
-  background: #E8E8E8;
+  background: $background_color;
 }
 
 nav {
@@ -35,6 +60,10 @@ nav ul li {
   float: left;
   list-style: none;
   margin-right: 17px;
+}
+nav ul li a {
+  color: #333;
+  @include nice-links($background_color);
 }
 
 h1 {
@@ -55,6 +84,7 @@ sup {
   }
 }
 .content {
+  padding: 10px;
   clear: both;
   float: left;
   background: white;
@@ -68,25 +98,36 @@ sup {
 .chapters >li {
   clear: both;
   float: left;
+  list-style: none;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 .chapters >li >ul {
   clear: both;
   list-style: none;
   // float: left;
+  margin-top: 0.3rem;
 }
 .chapters li ul li {
   float: left;
 }
 .chapters li ul li a {
+  line-height: 27px;
+  padding-top: 1px;
+  font-weight: normal;
   display: inline-block;
-  padding: 3px;
-  border: 1px solid black;
-  min-width: 18px;
+  background: #343434;
+  color: white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  min-width: 34px;
   text-align: center;
   text-decoration: none;
-}
-.chapters li ul li a:hover {
-  background: yellow;
+  @include border-box;
+  &:hover {
+    background: #ccc;
+    color: black;
+  }
 }
 
 // READER
@@ -100,9 +141,17 @@ sup {
 .chapter {
   line-height: 1.5em;
 }
+.chapter-nav {
+  a {
+    color: #333;
+    text-decoration: none;
+    &:hover {
+      @include nice-links(#ffffff);
+    }
+  }
+}
 
 .content.reader {
-  padding: 10px;
   width: 68%;
   float: left;
 }
@@ -116,12 +165,16 @@ sup {
 .excerpt-edit {
   width: 30%;
   height: 95vh;
-  right: 0;
-  top: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  @include border-box;
   padding: 10px;
+  float: right;
+  // overflow-x: hidden;
+  @include border-box;
+  @media #{$tablet} {
+    overflow-y: scroll;
+  }
+  h2 {
+    margin-top: 0;
+  }
 }
 
 .excerpt-edit__tags {
@@ -133,6 +186,9 @@ sup {
   background: black;
   padding: 0 1px;
   text-decoration: none;
+}
+.chosen-container {
+  width: 270px;
 }
 
 // /word-count
