@@ -27,4 +27,11 @@ module ApplicationHelper
     html
   end
 
+  def locale_to_human_language_name(locale)
+    {
+      fr: 'Français',
+      en: 'English'
+    }[locale]
+  end
+
 end
