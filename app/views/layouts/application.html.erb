@@ -15,7 +15,7 @@
     <li><a href="<%= word_cloud_path %>"><%= t 'word_cloud' %></a></li>
     <li><a href="<%= verse_search_path %>"><%= t 'search_verses' %></a></li>
     <li><a href="<%= choose_version_path %>"><%= t 'version' %>: <%= current_version.name %></a></li>
-    <li><a href="?locale=<%= I18n.locale == :fr ? :en : :fr %>"><%= locale_to_human_language_name(I18n.locale == :fr ? :en : :fr) %></a></li>
+    <li><a href="?locale=<%= I18n.locale == :fr ? :en : :fr %>"><%= locale_to_human_language_name(current_locale.to_sym == :fr ? :en : :fr) %></a></li>
   </ul>
 </nav>
 
