@@ -3,6 +3,11 @@
 Codex Liberatus est une application Web d'étude biblique, dont le code source
 est Libre ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)).
 
+## Dépendances
+
+* Ruby >= 1.9.3
+* Mac OS X ou Linux
+
 ## Installation
 
 1. `git clone git@github.com:juliend2/codex-liberatus.git`
