@@ -3,6 +3,7 @@
 TABLE OF CONTENTS:
 
 general
+useful classes
 url-based:
   / (reader)
   /book/6/chapters/22/read
@@ -40,6 +41,11 @@ $portrait: "only screen and (orientation: portrait)";
   text-decoration: none;
 }
 
+// useful classes
+
+.full-width {
+  width: 100%;
+}
 
 // general
 

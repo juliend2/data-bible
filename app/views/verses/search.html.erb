@@ -4,23 +4,28 @@
   <h1>Search</h1>
 <%- end %>
 
-<form method="get" action="<%= verse_search_path %>" class="content">
-  <input type="text" name="query" />
-  <input type="submit" value="Search" />
-</form>
+<div class="content full-width">
+  <form method="get" action="<%= verse_search_path %>" class="content">
+    <input type="text" name="query" />
+    <input type="submit" value="Search" />
+  </form>
 
-<dl class="content">
-  <%- @verse_versions.each do |verse_version| %>
-    <%- verse = verse_version.verse %>
-    <%- chapter = verse.chapter %>
-    <%- book = chapter.book %>
-    <dt>
-      <a href="<%= chapter_read_path(book.number, chapter.number) %>#verse-<%= verse.number %>">
-        <%= book.name %> <%= chapter.number %>:<%= verse_version.verse.number %>
-      </a>
-    </dt>
-    <dd>
-    <%= raw verse_version.content.gsub(@query, "<mark>#{@query}</mark>") %>
-    </dd>
+  <%- if @verse_versions.size > 0 %>
+    <dl class="content">
+      <h2><%= @verse_versions.size %> results</h2>
+      <%- @verse_versions.each do |verse_version| %>
+        <%- verse = verse_version.verse %>
+        <%- chapter = verse.chapter %>
+        <%- book = chapter.book %>
+        <dt>
+          <a href="<%= chapter_read_path(book.number, chapter.number) %>#verse-<%= verse.number %>">
+            <%= book.name %> <%= chapter.number %>:<%= verse_version.verse.number %>
+          </a>
+        </dt>
+        <dd>
+        <%= raw verse_version.content.gsub(@query, "<mark>#{@query}</mark>") %>
+        </dd>
+      <%- end %>
+    </dl>
   <%- end %>
-</dl>
+</div>
