@@ -13,6 +13,12 @@ namespace :db do
     json_path = ENV['JSON_PATH']
     version_slug = ENV['VERSION_SLUG']
 
+    # special case for default bible version
+    if version_slug == 'LSG' && Version.find_by_slug('LSG').nil?
+      version = Version.new(slug: version_slug, name: 'Louis Segond')
+      version.save
+    end
+
     json_text = File.read json_path
     bible = JSON.parse json_text, symbolize_names: true
     version = Version.where(slug: version_slug).first
