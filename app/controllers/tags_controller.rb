@@ -1,6 +1,11 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.all.order(:name)
+    @tags = Tag.all.
+      map{|tag| [tag, tag.name.parameterize] }.
+      sort{|x,y| x.last <=> y.last }.
+      group_by {|tag| tag.last[0] }.
+      map{|letter, group| [letter, group.map(&:first)] }.
+      to_h
   end
 
   def show

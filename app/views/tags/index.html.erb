@@ -1,11 +1,30 @@
 <h1>Tags</h1>
 
-<ul class="content">
-  <%- @tags.each do |tag| %>
-    <li>
-      <a href="<%= tags_show_path(tag) %>"><%= tag.name %> (<%= tag.excerpts.size %>)</a>
-      -
-      <a href="<%= tag_delete_path(tag) %>" onclick="return confirm('Are you sure?')">Delete</a>
-    </li>
+<div class="content full-width  letters-of-tags">
+  <%- number_of_letters = @tags.size %>
+  <%- number_of_columns = 3 %>
+  <%- by_column = number_of_letters / number_of_columns.to_f %>
+  <%= # because Float#ceil doesn't seem to work as I expect %>
+  <%- by_column += 1 if by_column % 1 > 0 %>
+  <%- @tags.each_slice(by_column) do |slice| %>
+    <div class="letters-of-tags__column one-third-column">
+      <%- slice.each do |first_letter, tag_group| %>
+        <div class="letter-of-tags">
+          <h2><%= first_letter %></h2>
+          <table class=" tags-list">
+            <%- tag_group.each do |tag| %>
+              <tr>
+                <td class="tags-list__first">
+                  <a href="<%= tags_show_path(tag) %>"><%= tag.name %></a> (<%= tag.excerpts.size %>)
+                </td>
+                <td class="tags-list__tools">
+                  <a href="<%= tag_delete_path(tag) %>" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+              </tr>
+            <%- end %>
+          </table>
+        </div>
+      <%- end %>
+    </div>
   <%- end %>
-</ul>
+</div>

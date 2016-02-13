@@ -7,11 +7,15 @@ useful classes
 url-based:
   / (reader)
   /book/6/chapters/22/read
+  /tags/index
   /word-count
 
 */
 
 $background_color: #E8E8E8;
+$link_color: #333333;
+$dark_gray: #343434;
+$pale_gray: #cccccc;
 
 // source: http://stackoverflow.com/a/7354648/242404
 $mobile-screen: 690px;
@@ -32,7 +36,7 @@ $portrait: "only screen and (orientation: portrait)";
   box-sizing: border-box;
 }
 
-@mixin nice-links($bg_color: #ffffff) {
+@mixin nice-underlines($bg_color: #ffffff) {
   background-image: linear-gradient(to top,$bg_color 0%,$bg_color 49%,#000 50%,#000 100%);
   background-size: 2px 2px;
   background-repeat: repeat-x;
@@ -46,6 +50,10 @@ $portrait: "only screen and (orientation: portrait)";
 .full-width {
   width: 100%;
 }
+.one-third-column {
+  width: 33%;
+  float: left;
+}
 
 // general
 
@@ -54,6 +62,10 @@ body {
   margin: 0 auto !important;
   padding: 0 10px;
   background: $background_color;
+}
+
+.content li {
+  list-style: none;
 }
 
 nav {
@@ -68,8 +80,8 @@ nav ul li {
   margin-right: 17px;
 }
 nav ul li a {
-  color: #333;
-  @include nice-links($background_color);
+  color: $link_color;
+  @include nice-underlines($background_color);
 }
 
 h1 {
@@ -122,7 +134,7 @@ sup {
   padding-top: 1px;
   font-weight: normal;
   display: inline-block;
-  background: #343434;
+  background: $dark_gray;
   color: white;
   border-right: 1px solid white;
   border-bottom: 1px solid white;
@@ -131,7 +143,7 @@ sup {
   text-decoration: none;
   @include border-box;
   &:hover {
-    background: #ccc;
+    background: $pale_gray;
     color: black;
   }
 }
@@ -149,10 +161,10 @@ sup {
 }
 .chapter-nav {
   a {
-    color: #333;
+    color: $link_color;
     text-decoration: none;
     &:hover {
-      @include nice-links(#ffffff);
+      @include nice-underlines(#ffffff);
     }
   }
 }
@@ -196,6 +208,25 @@ sup {
 .chosen-container {
   width: 270px;
 }
+
+// /tags/index
+
+.letter-of-tags {
+  h2 {
+    margin-bottom: 0.3rem;
+  }
+}
+.tags-list__first {
+  min-width: 200px;
+}
+.tags-list__tools {
+  a {
+    color: $pale_gray;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}
+
 
 // /word-count
 
