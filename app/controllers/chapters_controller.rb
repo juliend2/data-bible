@@ -20,4 +20,11 @@ class ChaptersController < ApplicationController
     end
     @tags = Tag.all
   end
+
+  def chapter_only
+    @book = Book.find_by_number(params[:book_number])
+    @chapter = @book.chapters.find_by_number(params[:chapter_number])
+    @version = current_version
+    render layout: false
+  end
 end

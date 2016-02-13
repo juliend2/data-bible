@@ -27,8 +27,7 @@ class TagsInExcerpt
 
 class Excerpts
   constructor: ()->
-    @jq_elements = $('.js-excerpt-start, .js-excerpt-end')
-    @jq_elements.on 'click', (e)=>
+    $('.js-chapter-content').on 'click', '.js-excerpt-start, .js-excerpt-end', (e)=>
       e.preventDefault()
       id = $(e.target).data('excerpt_id')
       color = $(e.target).data('excerpt_color')
@@ -81,6 +80,7 @@ class ExcerptEdit
     $('.js-excerpt-delete').on 'click', (e)=>
       e.preventDefault()
       $.post "/excerpts/#{selected_excerpt_id}/delete", (data)=>
+        $(window.App).trigger('excerpt:deleted')
         console.log('data', data)
 
   handle_selected_verses: ()=>
@@ -102,7 +102,8 @@ class Highlights
     console.log('highlight')
     $(window.App).bind('selected_verses:changed', @handle_selected_verses)
     $(window.App).bind('excerpt:created', @handle_excerpt_created)
-    $('.js-verse__text').on 'click', (e)-> $(this).prev('sup').find('.js-verse__number').triggerHandler('click')
+    $('.js-chapter-content').on 'click', '.js-verse__text', (e)-> $(this).prev('sup').find('.js-verse__number').triggerHandler('click')
+    @init_click()
 
   handle_selected_verses: ()=>
     console.log('handle selected verse')
@@ -121,13 +122,8 @@ class Highlights
       $(this).prop('selected', false)
     select.trigger('chosen:updated')
 
-class Verse
-  constructor: (jq_element)->
-    @jq_element = jq_element
-    @init_click()
-
   init_click: ()->
-    @jq_element.find('.js-verse__number').on 'click', (e)->
+    $('.js-chapter-content').on 'click', '.js-verse__number', (e)->
       e.preventDefault()
       if selected_verses.indexOf($(e.target).data('verse_number')) isnt -1
         console.log('selected')
@@ -140,11 +136,19 @@ class Verse
       $(window.App).trigger('selected_verses:changed')
       console.log('verse', $(this).data('version_slug'), $(this).data('book_number'), $(this).data('chapter_number'), $(this).data('verse_number'))
 
+class Chapter
+  constructor: (@book_number, @chapter_number) ->
+    $(window.App).bind('excerpt:created', @update)
+    $(window.App).bind('excerpt:deleted', @update)
+
+  update: ()=>
+    $.get "/book/#{@book_number}/chapters/#{@chapter_number}/chapter_only", (data) ->
+      $('.js-chapter-content').html(data)
+
 class App.Verses
-  constructor: ()->
+  constructor: (book_number, chapter_number)->
     excerptEditor = new ExcerptEdit()
     highlights = new Highlights()
     excerpts = new Excerpts()
     tags_in_excerpt = new TagsInExcerpt()
-    $('.js-verse').each ()->
-      verse = new Verse($(this))
+    chapter = new Chapter(book_number, chapter_number)
