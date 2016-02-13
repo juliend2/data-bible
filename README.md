@@ -16,6 +16,12 @@ est Libre ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)).
 4. `rake db:migrate`
 5. `env JSON_PATH=./db/seed_data/louis-segond-formatted.json VERSION_SLUG=LSG rake db:seed`
 
+## Lancer l'application
+
+1. `rails server`
+2. Ouvrir [http://localhost:3000/](http://localhost:3000/) dans votre
+   navigateur.
+
 ## License
 
 GPLv3
