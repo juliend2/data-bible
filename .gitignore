@@ -19,3 +19,5 @@
 .DS_Store
 
 .byebug_history
+
+/db/seed_data/seg21-formatted.json
