@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   def set_locale
     if params[:locale]
       session[:current_locale] = params[:locale]
-      I18n.locale = current_locale
     end
+    I18n.locale = current_locale
   end
 
   def current_locale
