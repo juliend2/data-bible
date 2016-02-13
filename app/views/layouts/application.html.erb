@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bibleapp</title>
+  <title>Codex Liberatus</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,11 +10,11 @@
 
 <nav>
   <ul>
-    <li><a href="/">Books / Chapters</a></li>
-    <li><a href="/tags/index">Tags</a></li>
-    <li><a href="<%= word_cloud_path %>">Word cloud</a></li>
-    <li><a href="<%= verse_search_path %>">Search verses</a></li>
-    <li><a href="<%= choose_version_path %>">Version: <%= current_version.name %></a></li>
+    <li><a href="/"><%= t 'book_chapter' %></a></li>
+    <li><a href="/tags/index"><%= t 'tags' %></a></li>
+    <li><a href="<%= word_cloud_path %>"><%= t 'word_cloud' %></a></li>
+    <li><a href="<%= verse_search_path %>"><%= t 'search_verses' %></a></li>
+    <li><a href="<%= choose_version_path %>"><%= t 'version' %>: <%= current_version.name %></a></li>
   </ul>
 </nav>
 

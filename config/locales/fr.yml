@@ -19,24 +19,24 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  chapter: "Chapter"
-  select_a_book_chapter: "Select a Book and a Chapter"
-  book_chapter: 'Books & Chapters'
-  tags: 'Tags'
-  word_cloud: "Word cloud"
-  search_verses: 'Search verses'
+fr:
+  chapter: "Chapitre"
+  select_a_book_chapter: "Sélectionnez un livre et un chapitre"
+  book_chapter: 'Livres et Chapitres'
+  tags: 'Étiquettes'
+  word_cloud: "Nuage de mots"
+  search_verses: 'Rechercher un verset'
   version: 'Version'
-  are_you_sure: 'Are you sure?'
-  excerpts_with_tag: 'Excerpts with tag'
+  are_you_sure: 'Êtes-vous sûr?'
+  excerpts_with_tag: "Passages avec l'étiquette"
   choose_bible_version: 'Choose your Bible version'
-  previous: 'Previous'
-  next: 'Next'
-  choose: 'Choose'
+  previous: 'Précédent'
+  next: 'Suivant'
+  choose: 'Choisir'
   tools:
-    delete: 'Delete'
+    delete: 'Supprimer'
   search:
-    found: 'Found'
-    search: 'Search'
-    results: 'results'
-    verses_with: 'verses with'
+    found: 'Trouvé'
+    search: 'Rechercher'
+    results: 'résultats'
+    verses_with: 'versets avec'

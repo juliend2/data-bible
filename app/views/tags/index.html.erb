@@ -1,4 +1,4 @@
-<h1>Tags</h1>
+<h1><%= t 'tags' %></h1>
 
 <div class="content full-width  letters-of-tags">
   <%-
@@ -19,7 +19,7 @@
                   <a href="<%= tags_show_path(tag) %>"><%= tag.name %></a> (<%= tag.excerpts.size %>)
                 </td>
                 <td class="tags-list__tools">
-                  <a href="<%= tag_delete_path(tag) %>" onclick="return confirm('Are you sure?')">Delete</a>
+                  <a href="<%= tag_delete_path(tag) %>" onclick="return confirm('<%= t "are_you_sure" %>')"><%= t 'tools.delete' %></a>
                 </td>
               </tr>
             <%- end %>
