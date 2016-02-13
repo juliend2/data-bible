@@ -11,6 +11,7 @@ class TagsInExcerpt
   constructor: ()->
     $(window.App).bind('excerpts:selected', @update)
     $(window.App).bind('excerpts:unselected', @update)
+    $(window.App).bind('selected_verses:changed', @update)
 
   update: ()=>
     console.log('selected_excerpt_id', selected_excerpt_id)
@@ -19,6 +20,10 @@ class TagsInExcerpt
     else
       $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
         $('.tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
+    if selected_verses.length > 0
+      $('.js-assign-tag-to-verses').show()
+    else
+      $('.js-assign-tag-to-verses').hide()
 
 class Excerpts
   constructor: ()->
@@ -44,6 +49,7 @@ class ExcerptEdit
     @jq_element = $('.js-excerpt-edit')
     select = @jq_element.find('.js-excerpt-edit__tags')
     select.chosen()
+    $('.js-assign-tag-to-verses').hide() # by default it's hidden
 
     # Hack from: http://stackoverflow.com/a/24961779/242404
     select.next('.chosen-container').find('input').on 'keydown', (evt) ->
@@ -85,9 +91,11 @@ class ExcerptEdit
     if selected_excerpt_id is null
       console.log('nothing selected')
       $('.js-excerpts-edit-box').hide()
+      $('.js-tags-in-excerpt').hide()
     else
       console.log('something selected')
       $('.js-excerpts-edit-box').show()
+      $('.js-tags-in-excerpt').show()
 
 class Highlights
   constructor: ()->

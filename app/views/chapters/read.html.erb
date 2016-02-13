@@ -66,24 +66,28 @@
         <i>No tag yet. :-(</i>
       <%- end %>
     </p>
-    <h3>in this Excerpt</h3>
-    <p class="tags-in-excerpt">
-      <i>Please select an excerpt</i>
-    </p>
-    <h3>assign tags to these verses:</h3>
-    <p class="js-excerpt-edit__preview"></p>
-    <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
-    <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
-    <p>
-      <select class="js-excerpt-edit__tags  excerpt-edit__tags" multiple="multiple">
-        <%- @tags.each do |tag| %>
-          <option value="<%= tag.name %>"><%= tag.name %></option>
-        <%- end %>
-      </select>
-    </p>
-    <p>
-      <input type="submit" name="submit" value="Save" />
-    </p>
+    <div class="js-tags-in-excerpt" style="display: none">
+      <h3>in this Excerpt</h3>
+      <p class="tags-in-excerpt">
+        <i>Please select an excerpt</i>
+      </p>
+    </div>
+    <div class="js-assign-tag-to-verses">
+      <h3>assign tags to these verses:</h3>
+      <p class="js-excerpt-edit__preview"></p>
+      <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
+      <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
+      <p>
+        <select class="js-excerpt-edit__tags  excerpt-edit__tags" multiple="multiple">
+          <%- @tags.each do |tag| %>
+            <option value="<%= tag.name %>"><%= tag.name %></option>
+          <%- end %>
+        </select>
+      </p>
+      <p>
+        <input type="submit" name="submit" value="Save" />
+      </p>
+    </div>
   </form>
   </fieldset>
   <form>
