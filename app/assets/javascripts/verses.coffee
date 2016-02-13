@@ -57,6 +57,8 @@ class ExcerptEdit
 
     $(window.App).bind('selected_verses:changed', @handle_selected_verses)
     @init_events()
+    $(window.App).bind('excerpts:selected', @toggle)
+    $(window.App).bind('excerpts:unselected', @toggle)
 
   init_events: ()->
     @jq_element.on 'submit', (e)=>
@@ -78,6 +80,14 @@ class ExcerptEdit
   handle_selected_verses: ()=>
     console.log('handle selected verse')
     $('.js-excerpt-edit__preview').text(selected_verses.sort((a,b)-> a - b).join(', '))
+
+  toggle: ()=>
+    if selected_excerpt_id is null
+      console.log('nothing selected')
+      $('.js-excerpts-edit-box').hide()
+    else
+      console.log('something selected')
+      $('.js-excerpts-edit-box').show()
 
 class Highlights
   constructor: ()->
