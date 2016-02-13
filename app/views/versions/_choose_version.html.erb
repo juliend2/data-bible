@@ -1,4 +1,4 @@
-<form class="content" action="<%= set_version_path %>" method="post">
+<form class="content full-width" action="<%= set_version_path %>" method="post">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%- @available_versions.each do |version| %>
     <p>
