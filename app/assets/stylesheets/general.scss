@@ -15,6 +15,7 @@ url-based:
 $background_color: #E8E8E8;
 $link_color: #333333;
 $dark_gray: #343434;
+$gray: #9E9E9E;
 $pale_gray: #cccccc;
 
 // source: http://stackoverflow.com/a/7354648/242404
@@ -193,10 +194,14 @@ sup {
   h2 {
     margin-top: 0;
   }
+  fieldset {
+    margin-bottom: 1rem;
+    border: 1px dotted $gray;
+  }
 }
 
 .excerpt-edit__tags {
-  width: 300px;
+  width: 240px;
 }
 
 .excerpt-start, .excerpt-end {

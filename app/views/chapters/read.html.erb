@@ -49,43 +49,44 @@
 </div>
 
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
-  <h2>
-    Tags in this Chapter:
-  </h2>
-  <p class="tags-in-chapter">
-    <%- @chapter_tags.each do |tag| %>
-      <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
-    <%- end %>
-    <%- if @chapter_tags.empty? %>
-      <i>No tag yet. :-(</i>
-    <%- end %>
-  </p>
-  <h2>
-    Tags in this Excerpt:
-  </h2>
-  <p class="tags-in-excerpt">
-    <i>Please select an excerpt</i>
-  </p>
-  <h3>Delete this Excerpt</h3>
-  <p>
-    <button class="js-excerpt-delete">Delete</button>
-  </p>
-  <h2>Tags for these verses:</h2>
-  <p class="js-excerpt-edit__preview"></p>
-  <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
-  <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
-  <form>
-  <p>
-    <select class="js-excerpt-edit__tags  excerpt-edit__tags" multiple="multiple">
-      <%- @tags.each do |tag| %>
-        <option value="<%= tag.name %>"><%= tag.name %></option>
+  <fieldset>
+    <h2>Excerpt</h2>
+    <p>
+      <button class="js-excerpt-delete">Delete this excerpt</button>
+    </p>
+  </fieldset>
+  <fieldset>
+    <h2>Tags</h2>
+    <h3>in this chapter</h3>
+    <p class="tags-in-chapter">
+      <%- @chapter_tags.each do |tag| %>
+        <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
       <%- end %>
-    </select>
-  </p>
-  <p>
-    <input type="submit" name="submit" value="Save" />
-  </p>
+      <%- if @chapter_tags.empty? %>
+        <i>No tag yet. :-(</i>
+      <%- end %>
+    </p>
+    <h3>in this Excerpt</h3>
+    <p class="tags-in-excerpt">
+      <i>Please select an excerpt</i>
+    </p>
+    <h3>assign tags to these verses:</h3>
+    <p class="js-excerpt-edit__preview"></p>
+    <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
+    <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
+    <p>
+      <select class="js-excerpt-edit__tags  excerpt-edit__tags" multiple="multiple">
+        <%- @tags.each do |tag| %>
+          <option value="<%= tag.name %>"><%= tag.name %></option>
+        <%- end %>
+      </select>
+    </p>
+    <p>
+      <input type="submit" name="submit" value="Save" />
+    </p>
   </form>
+  </fieldset>
+  <form>
 </form>
 
 <script>
