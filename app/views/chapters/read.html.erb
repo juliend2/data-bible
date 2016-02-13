@@ -50,30 +50,30 @@
 
 <form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
   <fieldset class="js-excerpts-edit-box" style="display: none;">
-    <h2>Excerpt</h2>
+    <h2><%= t 'excerpt' %></h2>
     <p>
-      <button class="js-excerpt-delete">Delete this excerpt</button>
+      <button class="js-excerpt-delete"><%= t 'delete_excerpt' %></button>
     </p>
   </fieldset>
   <fieldset class="js-tags-edit-box">
-    <h2>Tags</h2>
-    <h3>in this chapter</h3>
+    <h2><%= t 'tags' %></h2>
+    <h3><%= t 'in_this_chapter' %></h3>
     <p class="tags-in-chapter">
       <%- @chapter_tags.each do |tag| %>
         <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
       <%- end %>
       <%- if @chapter_tags.empty? %>
-        <i>No tag yet. :-(</i>
+        <i><%= t 'no_tag_yet' %></i>
       <%- end %>
     </p>
     <div class="js-tags-in-excerpt" style="display: none">
-      <h3>in this Excerpt</h3>
+      <h3><%= t 'in_this_excerpt' %></h3>
       <p class="tags-in-excerpt">
-        <i>Please select an excerpt</i>
+        <i><%= t 'please_select_excerpt' %></i>
       </p>
     </div>
     <div class="js-assign-tag-to-verses">
-      <h3>assign tags to these verses:</h3>
+      <h3><%= t 'assign_tag_to_verses' %></h3>
       <p class="js-excerpt-edit__preview"></p>
       <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
       <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
@@ -85,7 +85,7 @@
         </select>
       </p>
       <p>
-        <input type="submit" name="submit" value="Save" />
+        <input type="submit" name="submit" value="<%= t 'add' %>" />
       </p>
     </div>
   </form>
