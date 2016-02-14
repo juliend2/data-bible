@@ -3,7 +3,7 @@
 Codex Liberatus est une application Web d'étude biblique, dont le code source
 est Libre ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)).
 
-Fonctionnalités:
+## Fonctionnalités
 
 * Engin de recherche de versets
 * Étiquettage (tagging) de passages (groupes de versets) pour une catégorisation flexible
