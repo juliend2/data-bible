@@ -126,6 +126,7 @@ class Highlights
     select.find('option').each ()->
       $(this).prop('selected', false)
     select.trigger('chosen:updated')
+    $('.js-excerpt-edit__note').val('')
 
   init_click: ()->
     $('.js-chapter-content').on 'click', '.js-verse__number', (e)->
