@@ -17,6 +17,8 @@ en:
   in_this_excerpt: 'In this excerpt'
   please_select_excerpt: 'Please select an excerpt'
   assign_tag_to_verses: 'Assign tags to these verses:'
+  add_note_to_excerpt: 'Add a note to these verses:'
+  note_in_excerpt: 'Note in excerpt'
   add: "Add"
   no_tag_yet: 'No tag yet.'
   delete_excerpt: 'Delete this excerpt'

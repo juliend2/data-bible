@@ -16,14 +16,16 @@ class TagsInExcerpt
   update: ()=>
     console.log('selected_excerpt_id', selected_excerpt_id)
     if selected_excerpt_id is null
-      $('.tags-in-excerpt').html("<i>Please select an excerpt</i>")
+      $('.js-list-tags-in-excerpt').html("<i>Please select an excerpt</i>")
     else
       $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
-        $('.tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
+        $('.js-list-tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
+      $.get "/excerpts/#{selected_excerpt_id}/note", (data) ->
+        $('.js-note-in-excerpt').html(data)
     if selected_verses.length > 0
       $('.js-assign-tag-to-verses').show()
     else
-      $('.js-assign-tag-to-verses').hide()
+      console.log('NE PAS montrer la note')
 
 class Excerpts
   constructor: ()->
@@ -73,9 +75,10 @@ class ExcerptEdit
       book = @jq_element.find('.js-excerpt-edit__book').val()
       chapter = @jq_element.find('.js-excerpt-edit__chapter').val()
       verses = @jq_element.find('.js-excerpt-edit__preview').text().split(', ')
+      note = @jq_element.find('.js-excerpt-edit__note').val()
       console.log('tags', tags, 'verses', verses)
       $.post $(e.target).attr('action'),
-        {tags: tags, book: book, chapter: chapter, verses: verses},
+        {tags: tags, book: book, chapter: chapter, verses: verses, note: note},
         ((data, textStatus, jqXHR)=> $(window.App).trigger('excerpt:created'))
     $('.js-excerpt-delete').on 'click', (e)=>
       e.preventDefault()
@@ -92,10 +95,12 @@ class ExcerptEdit
       console.log('nothing selected')
       $('.js-excerpts-edit-box').hide()
       $('.js-tags-in-excerpt').hide()
+      $('.js-note-edit-box').hide()
     else
       console.log('something selected')
       $('.js-excerpts-edit-box').show()
       $('.js-tags-in-excerpt').show()
+      $('.js-note-edit-box').show()
 
 class Highlights
   constructor: ()->

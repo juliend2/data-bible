@@ -33,16 +33,22 @@ class TagsController < ApplicationController
     verses = chapter.verses.where(number: params[:verses].map(&:to_i))
     excerpt = Excerpt.new
     excerpt.verses = verses
-    tags = []
-    params[:tags].each do |tag|
-      db_tag = Tag.find_by_name(tag)
-      unless db_tag
-        db_tag = Tag.new(name: tag)
-        db_tag.save
+    # Are we assigning tags to this excerpt?
+    if params[:tags].kind_of?(Array)
+      tags = []
+      params[:tags].each do |tag|
+        db_tag = Tag.find_by_name(tag)
+        unless db_tag
+          db_tag = Tag.new(name: tag)
+          db_tag.save
+        end
+        tags << db_tag
       end
-      tags << db_tag
+      excerpt.tags = tags
     end
-    excerpt.tags = tags
+    # Are we assigning a note to this excerpt?
+    excerpt.note = params[:note] if params[:note]
+
     saved_excerpt = excerpt.save
     if saved_excerpt
       render json: {status: 'success'}

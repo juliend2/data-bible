@@ -24,11 +24,13 @@
     </p>
     <div class="js-tags-in-excerpt" style="display: none">
       <h3><%= t 'in_this_excerpt' %></h3>
-      <p class="tags-in-excerpt">
+      <p class="js-list-tags-in-excerpt  tags-in-excerpt">
         <i><%= t 'please_select_excerpt' %></i>
       </p>
     </div>
     <div class="js-assign-tag-to-verses">
+      <h3><%= t 'add_note_to_excerpt' %></h3>
+      <%= text_area_tag(:note, "", size: "27x6", class: 'js-excerpt-edit__note') %>
       <h3><%= t 'assign_tag_to_verses' %></h3>
       <p class="js-excerpt-edit__preview"></p>
       <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
@@ -44,9 +46,13 @@
         <input type="submit" name="submit" value="<%= t 'add' %>" />
       </p>
     </div>
-  </form>
   </fieldset>
-  <form>
+  <fieldset class="js-note-edit-box" style="display: none;">
+    <div class="js-display-note-in-excerpt">
+      <h2><%= t 'note_in_excerpt' %></h2>
+      <div class="js-note-in-excerpt  note-in-excerpt"></div>
+    </div>
+  </fieldset>
 </form>
 
 <script>

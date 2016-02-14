@@ -17,6 +17,8 @@ fr:
   in_this_excerpt: 'Dans ce passage'
   please_select_excerpt: 'Veuillez sélectionner un passage'
   assign_tag_to_verses: 'Assigner des étiquettes à ces versets:'
+  add_note_to_excerpt: 'Ajouter une note à ce passage:'
+  note_in_excerpt: 'Note pour ce passage'
   add: "Ajouter"
   no_tag_yet: "Toujours pas d'étiquette"
   delete_excerpt: 'Supprimer ce passage'
