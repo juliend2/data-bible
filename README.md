@@ -1,21 +1,21 @@
 # Codex Liberatus
 
-Codex Liberatus est une application Web d'étude biblique, dont le code source
-est Libre ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)).
+*Codex Liberatus* est une application Web d'étude biblique, dont le code source
+est Libre.
 
 ## Fonctionnalités
 
 * Engin de recherche de versets
 * Étiquettage (tagging) de passages (groupes de versets) pour une catégorisation flexible
-* Permet d'ajouter des notes personnelles aux passages
-* Nuage de mots, pour voir quels sont les mots les plus utilisés pour chaque
+* Ajoute de notes personnelles aux passages
+* Nuage de mots, pour voir quels sont les mots les plus utilisés dans chaque
   livre de la Bible
 * Version Louis Segond (1910) incluse
 
 ## Dépendances
 
+* Système d'exploitation Mac OS X ou Linux
 * Ruby >= 1.9.3
-* Mac OS X ou Linux
 
 ## Installation
 
@@ -33,4 +33,4 @@ est Libre ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)).
 
 ## License
 
-GPLv3
+[GPLv3](http://www.gnu.org/licenses/gpl-3.0.fr.html)
