@@ -7,6 +7,7 @@
    by_column = number_of_letters / number_of_columns.to_f
    by_column += 1 if by_column % 1 > 0  # because Float#ceil doesn't seem to work as I expect
   %>
+<%- if by_column > 0 %>
   <%- @tags.each_slice(by_column) do |slice| %>
     <div class="letters-of-tags__column one-third-column">
       <%- slice.each do |first_letter, tag_group| %>
@@ -28,4 +29,7 @@
       <%- end %>
     </div>
   <%- end %>
+<%- else %>
+  <%= t 'no_tag_yet' %>
+<%- end %>
 </div>
