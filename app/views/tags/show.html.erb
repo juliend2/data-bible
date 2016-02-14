@@ -1,12 +1,12 @@
 <h1><%= t 'excerpts_with_tag' %> '<%= @tag.name %>'</h1>
 
-<div class="content">
+<div class="content full-width">
 <%- @excerpts_with_text.each do |excerpt| %>
-  <hr/>
   <p>
     <%- excerpt.each do |verse| %>
-      <a href="<%= verse[:path] %>#verse-<%= verse[:verse_number] %>"><%= verse[:chapter].book.name %> <%= verse[:chapter].number %>:<%= verse[:verse_number] %> <%= verse[:text] %></a><br/>
+      <%= verse[:chapter].book.name %> <%= verse[:chapter].number %>:<%= verse[:verse_number] %>  <a href="<%= verse[:path] %>#verse-<%= verse[:verse_number] %>"><%= verse[:text] %></a><br/>
     <%- end %>
   </p>
+  <hr/>
 <%- end %>
 </div>
