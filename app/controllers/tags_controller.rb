@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+
   def index
     @tags = Tag.all.
       map{|tag| [tag, tag.name.parameterize] }.
@@ -61,4 +62,5 @@ class TagsController < ApplicationController
     Tag.find(params[:id]).destroy
     redirect_to tags_index_url
   end
+
 end

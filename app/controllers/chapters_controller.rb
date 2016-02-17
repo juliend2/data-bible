@@ -18,7 +18,7 @@ class ChaptersController < ApplicationController
       flash[:notice] = "Please choose a Bible version"
       redirect_to choose_version_path
     end
-    @tags = Tag.all
+    @tags = Tag.order(:name).all
   end
 
   def chapter_only
