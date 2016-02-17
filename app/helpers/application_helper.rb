@@ -1,5 +1,14 @@
 module ApplicationHelper
 
+  def markdown_to_html(md_string)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    markdown.render(md_string)
+  end
+
+  def chapter_path(book_number, chapter_number)
+    Rails.application.routes.url_helpers.chapter_read_path(book_number, chapter_number)
+  end
+
   def word_cloud(words)
     html = ''
     html += "<ul class='word-cloud'>"

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'excerpts/:id/tags', to: 'excerpts#tags', as: 'excerpt_tags'
   get 'excerpts/:id/note', to: 'excerpts#note', as: 'excerpt_note'
+  get 'excerpts/notes', to: 'excerpts#notes', as: 'excerpt_notes'
   post 'excerpts/:id/delete', to: 'excerpts#delete', as: 'excerpt_delete'
 
   get 'tags/:id/show', to: 'tags#show', as: 'tags_show'

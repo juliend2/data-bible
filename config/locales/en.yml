@@ -3,6 +3,8 @@ en:
   select_a_book_chapter: "Select a Book and a Chapter"
   book_chapter: 'Books & Chapters'
   tags: 'Tags'
+  notes: 'Notes'
+  note: 'Note'
   word_cloud: "Word cloud"
   search_verses: 'Search verses'
   version: 'Version'

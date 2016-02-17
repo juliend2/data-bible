@@ -3,6 +3,8 @@ fr:
   select_a_book_chapter: "Sélectionnez un livre et un chapitre"
   book_chapter: 'Livres et Chapitres'
   tags: 'Étiquettes'
+  notes: 'Notes'
+  note: 'Note'
   word_cloud: "Nuage de mots"
   search_verses: 'Rechercher un verset'
   version: 'Version'

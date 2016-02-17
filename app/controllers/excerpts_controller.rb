@@ -15,6 +15,10 @@ class ExcerptsController < ApplicationController
     render layout: false
   end
 
+  def notes
+    @excerpts_with_notes = Excerpt.where.not(note: nil)
+  end
+
   def delete
     if Excerpt.find(params[:id]).destroy
       render json: {status: 'success'}
