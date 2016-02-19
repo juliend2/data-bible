@@ -29,11 +29,20 @@ class TagsController < ApplicationController
   end
 
   def assign
-    book = Book.find_by_number(params[:book])
-    chapter = book.chapters.find_by_number(params[:chapter])
-    verses = chapter.verses.where(number: params[:verses].map(&:to_i))
-    excerpt = Excerpt.new
-    excerpt.verses = verses
+    excerpt = begin
+                if params[:excerpt_id] && Excerpt.exists?(params[:excerpt_id])
+                  # UPDATE
+                  ex = Excerpt.find(params[:excerpt_id])
+                else
+                  # CREATE
+                  book = Book.find_by_number(params[:book])
+                  chapter = book.chapters.find_by_number(params[:chapter])
+                  verses = chapter.verses.where(number: params[:verses].map(&:to_i))
+                  ex = Excerpt.new
+                  ex.verses = verses
+                end
+                ex
+              end
     # Are we assigning tags to this excerpt?
     if params[:tags].kind_of?(Array)
       tags = []

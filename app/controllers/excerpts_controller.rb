@@ -10,8 +10,7 @@ class ExcerptsController < ApplicationController
   end
 
   def note
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    @html = markdown.render(Excerpt.find(params[:id]).note || '')
+    @note = Excerpt.find(params[:id]).note || ''
     render layout: false
   end
 

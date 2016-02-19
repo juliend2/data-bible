@@ -4,16 +4,18 @@
   <%= render partial: 'chapter_text', locals: {chapter: @chapter, book: @book, version: @version} %>
 </div>
 
-<form class="js-excerpt-edit  excerpt-edit" action="<%= tags_assign_path %>">
-  <fieldset class="js-excerpts-edit-box" style="display: none;">
+<div class="js-excerpt-edit  excerpt-edit" >
+  <!--
+  <fieldset class="js-excerpts-edit-box"><%# style="display: none;" %>
     <h2><%= t 'excerpt' %></h2>
     <p>
       <button class="js-excerpt-delete"><%= t 'delete_excerpt' %></button>
     </p>
   </fieldset>
-  <fieldset class="js-tags-edit-box">
-    <h2><%= t 'tags' %></h2>
-    <h3><%= t 'in_this_chapter' %></h3>
+  -->
+  <h2>Annotations</h2>
+  <div class="">
+    <h3>Tags dans ce chapitre</h3>
     <p class="tags-in-chapter">
       <%- @chapter_tags.each do |tag| %>
         <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
@@ -22,15 +24,15 @@
         <i><%= t 'no_tag_yet' %></i>
       <%- end %>
     </p>
-    <div class="js-tags-in-excerpt" style="display: none">
-      <h3><%= t 'in_this_excerpt' %></h3>
+    <h3>Tags dans le passage sélectionné</h3>
+    <div class="js-tags-in-excerpt"><!--  style="display: none;" -->
       <p class="js-list-tags-in-excerpt  tags-in-excerpt">
         <i><%= t 'please_select_excerpt' %></i>
       </p>
     </div>
+  </div>
+  <form action="<%= tags_assign_path %>" class="js-excerpt-note-edit">
     <div class="js-assign-tag-to-verses">
-      <h3><%= t 'add_note_to_excerpt' %></h3>
-      <%= text_area_tag(:note, "", size: "27x6", class: 'js-excerpt-edit__note') %>
       <h3><%= t 'assign_tag_to_verses' %></h3>
       <p class="js-excerpt-edit__preview"></p>
       <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
@@ -42,18 +44,20 @@
           <%- end %>
         </select>
       </p>
+      <h3><%= t 'note' %></h3>
+      <%= text_area_tag(:note, "", size: "27x6", class: 'js-excerpt-edit__note') %>
       <p>
         <input type="submit" name="submit" value="<%= t 'add' %>" />
       </p>
     </div>
-  </fieldset>
-  <fieldset class="js-note-edit-box" style="display: none;">
+    <!--
     <div class="js-display-note-in-excerpt">
       <h2><%= t 'note_in_excerpt' %></h2>
       <div class="js-note-in-excerpt  note-in-excerpt"></div>
     </div>
-  </fieldset>
-</form>
+    -->
+  </form>
+</div>
 
 <script>
 new App.Verses(<%= @book.number %>, <%= @chapter.number %>);

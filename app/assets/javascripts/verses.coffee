@@ -21,7 +21,7 @@ class TagsInExcerpt
       $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
         $('.js-list-tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
       $.get "/excerpts/#{selected_excerpt_id}/note", (data) ->
-        $('.js-note-in-excerpt').html(data)
+        $('.js-excerpt-edit__note').val(data)
     if selected_verses.length > 0
       $('.js-assign-tag-to-verses').show()
     else
@@ -68,17 +68,18 @@ class ExcerptEdit
     $(window.App).bind('excerpts:unselected', @toggle)
 
   init_events: ()->
-    @jq_element.on 'submit', (e)=>
+    form = $('.js-excerpt-note-edit')
+    $('.js-excerpt-note-edit').on 'submit', (e)=>
       e.preventDefault()
       console.log('submit')
-      tags = @jq_element.find('.js-excerpt-edit__tags').val()
-      book = @jq_element.find('.js-excerpt-edit__book').val()
-      chapter = @jq_element.find('.js-excerpt-edit__chapter').val()
-      verses = @jq_element.find('.js-excerpt-edit__preview').text().split(', ')
-      note = @jq_element.find('.js-excerpt-edit__note').val()
+      tags = form.find('.js-excerpt-edit__tags').val()
+      book = form.find('.js-excerpt-edit__book').val()
+      chapter = form.find('.js-excerpt-edit__chapter').val()
+      verses = form.find('.js-excerpt-edit__preview').text().split(', ')
+      note = form.find('.js-excerpt-edit__note').val()
       console.log('tags', tags, 'verses', verses)
       $.post $(e.target).attr('action'),
-        {tags: tags, book: book, chapter: chapter, verses: verses, note: note},
+        {tags: tags, book: book, chapter: chapter, verses: verses, note: note, excerpt_id: selected_excerpt_id},
         ((data, textStatus, jqXHR)=> $(window.App).trigger('excerpt:created'))
     $('.js-excerpt-delete').on 'click', (e)=>
       e.preventDefault()
