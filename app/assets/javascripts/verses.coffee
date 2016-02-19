@@ -7,6 +7,10 @@ window.App ||= {}
 selected_verses = []
 selected_excerpt_id = null
 
+pluck = (arr, prop)->
+  $.map arr, (o)->
+    return o[prop]
+
 class TagsInExcerpt
   constructor: ()->
     $(window.App).bind('excerpts:selected', @update)
@@ -20,6 +24,11 @@ class TagsInExcerpt
     else
       $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
         $('.js-list-tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
+        select = $('.js-excerpt-edit__tags')
+        select.find('option').each ()->
+          if $.inArray($(this).val(), pluck(data, 'name')) != -1
+            $(this).prop('selected', true)
+        select.trigger('chosen:updated')
       $.get "/excerpts/#{selected_excerpt_id}/note", (data) ->
         $('.js-excerpt-edit__note').val(data)
     if selected_verses.length > 0
@@ -50,7 +59,7 @@ class ExcerptEdit
     @jq_element = $('.js-excerpt-edit')
     select = @jq_element.find('.js-excerpt-edit__tags')
     select.chosen()
-    $('.js-assign-tag-to-verses').hide() # by default it's hidden
+    # $('.js-assign-tag-to-verses').hide() # by default it's hidden
 
     # Hack from: http://stackoverflow.com/a/24961779/242404
     select.next('.chosen-container').find('input').on 'keydown', (evt) ->

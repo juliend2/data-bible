@@ -57,7 +57,7 @@ class TagsController < ApplicationController
       excerpt.tags = tags
     end
     # Are we assigning a note to this excerpt?
-    excerpt.note = params[:note] if params[:note]
+    excerpt.note = params[:note].strip if params[:note]
 
     saved_excerpt = excerpt.save
     if saved_excerpt
