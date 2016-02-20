@@ -25,6 +25,7 @@ en:
   add_note_to_excerpt: 'Add a note to these verses:'
   note_in_excerpt: 'Note in excerpt'
   add: "Add"
+  save: "Save"
   no_tag_yet: 'No tag yet.'
   delete_excerpt: 'Delete this excerpt'
   tools:

@@ -25,6 +25,7 @@ fr:
   add_note_to_excerpt: 'Ajouter une note à ce passage:'
   note_in_excerpt: 'Note pour ce passage'
   add: "Ajouter"
+  save: "Sauvegarder"
   no_tag_yet: "Toujours pas d'étiquette"
   delete_excerpt: 'Supprimer ce passage'
   tools:
