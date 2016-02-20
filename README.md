@@ -5,12 +5,22 @@ est Libre.
 
 ## Fonctionnalités
 
-* Engin de recherche de versets
+* Outil de recherche de versets
 * Étiquettage (tagging) de passages (groupes de versets) pour une catégorisation flexible
-* Ajoute de notes personnelles aux passages
+* Ajout de notes personnelles aux passages sélectionnés
 * Nuage de mots, pour voir quels sont les mots les plus utilisés dans chaque
   livre de la Bible
 * Version Louis Segond (1910) incluse
+
+### autres fonctionnalités désirées
+
+* Page qui liste les livres et chapitres par auteur présumé
+* Page qui liste les livres et chapitres par époque présumée de rédaction (ordre chronologique)
+* Ajouter l'index de concordances de [Strong](https://en.wikipedia.org/wiki/Strong%27s_Concordance) sur les mots qui s'appliquent, au moins pour la version Louis Segond
+* Outil de recherche plus avancé, entre autre pour:
+  * raffiner les résultats selon un livre ou un chapitre en particulier
+  * rechercher plusieurs mots qui ne sont pas nécessairement collés
+  * exclure certains mots des résultats de recherche
 
 ## Dépendances
 
