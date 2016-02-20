@@ -1,7 +1,7 @@
 # Data Bible
 
 *Data Bible* est une application Web d'étude biblique, dont le code source
-est Libre.
+est libre.
 
 ## Fonctionnalités
 
