@@ -2,6 +2,7 @@ fr:
   chapter: "Chapitre"
   select_a_book_chapter: "Sélectionnez un livre et un chapitre"
   book_chapter: 'Livres et Chapitres'
+  annotations: 'Annotations'
   tags: 'Étiquettes'
   notes: 'Notes'
   note: 'Note'
@@ -13,6 +14,8 @@ fr:
   previous: 'Précédent'
   next: 'Suivant'
   choose: 'Choisir'
+  tags_in_this_chapter: 'Tags dans ce chapitre'
+  tags_in_selected_excerpt: 'Tags dans le passage sélectionné'
   in_this_chapter: 'Dans ce chapitre'
   excerpt: "Passage"
   excerpts_with_tag: "Passages avec l'étiquette"

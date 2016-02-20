@@ -13,9 +13,9 @@
     </p>
   </fieldset>
   -->
-  <h2>Annotations</h2>
+  <h2><%= t 'annotations' %></h2>
   <div class="">
-    <h3>Tags dans ce chapitre</h3>
+    <h3><%= t 'tags_in_this_chapter' %></h3>
     <p class="tags-in-chapter">
       <%- @chapter_tags.each do |tag| %>
         <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
@@ -24,7 +24,7 @@
         <i><%= t 'no_tag_yet' %></i>
       <%- end %>
     </p>
-    <h3>Tags dans le passage sélectionné</h3>
+    <h3><%= t 'tags_in_selected_excerpt' %></h3>
     <div class="js-tags-in-excerpt"><!--  style="display: none;" -->
       <p class="js-list-tags-in-excerpt  tags-in-excerpt">
         <i><%= t 'please_select_excerpt' %></i>
@@ -50,12 +50,6 @@
         <input type="submit" name="submit" value="<%= t 'add' %>" />
       </p>
     </div>
-    <!--
-    <div class="js-display-note-in-excerpt">
-      <h2><%= t 'note_in_excerpt' %></h2>
-      <div class="js-note-in-excerpt  note-in-excerpt"></div>
-    </div>
-    -->
   </form>
 </div>
 
