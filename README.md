@@ -1,6 +1,6 @@
-# Codex Liberatus
+# Data Bible
 
-*Codex Liberatus* est une application Web d'étude biblique, dont le code source
+*Data Bible* est une application Web d'étude biblique, dont le code source
 est Libre.
 
 ## Fonctionnalités
@@ -19,8 +19,8 @@ est Libre.
 
 ## Installation
 
-1. `git clone https://github.com/juliend2/codex-liberatus.git`
-2. `cd codex-liberatus`
+1. `git clone https://github.com/juliend2/data-bible.git`
+2. `cd data-bible`
 3. `bundle install`
 4. `rake db:migrate`
 5. `env JSON_PATH=./db/seed_data/louis-segond-formatted.json VERSION_SLUG=LSG rake db:seed`
