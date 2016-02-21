@@ -14,7 +14,7 @@
     </thead>
     <tbody>
     <%- @excerpts_with_notes.each do |excerpt| %>
-      <tr class="border-bottom">
+      <tr class="border-top">
         <td class="padding-top padding-bottom">
           <%- excerpt.verses.each do |verse| %>
             <%= verse.chapter.book.name %> <%= verse.chapter.number %>:<%= verse.number %> 
