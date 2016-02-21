@@ -41,5 +41,5 @@
   <%= render partial: 'chapter_nav', locals: {book: @book, chapter: @chapter} %>
 <br/>
 <%- if found_not_available %>
-  * Some verses are not available in this translation, or they are not in the same chapter.
+  * <%= t 'verse_warning' %>
 <%- end %>

@@ -28,6 +28,7 @@ fr:
   save: "Sauvegarder"
   no_tag_yet: "Toujours pas d'étiquette"
   delete_excerpt: 'Supprimer ce passage'
+  verse_warning: "Certains textes ne sont pas présents dans cette traduction, ou leur contenu n'est pas présenté dans les mêmes chapitres ou versets."
   tools:
     delete: 'Supprimer'
   search:

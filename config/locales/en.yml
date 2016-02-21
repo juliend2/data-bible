@@ -28,6 +28,7 @@ en:
   save: "Save"
   no_tag_yet: 'No tag yet.'
   delete_excerpt: 'Delete this excerpt'
+  verse_warning: "Some texts are not available in this translation, or they are not presented in the same chapters or verses."
   tools:
     delete: 'Delete'
   search:
