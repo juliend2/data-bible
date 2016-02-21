@@ -1,4 +1,4 @@
-<h1><%= @chapter.book.name %> - <%= t 'chapter' %> <%= @chapter.number %></h1>
+<h1><%= @chapter.book.name %>, <span class="lowercase"><%= t 'chapter' %></span> <%= @chapter.number %></h1>
 
 <div class="reader content js-chapter-content">
   <%= render partial: 'chapter_text', locals: {chapter: @chapter, book: @book, version: @version} %>

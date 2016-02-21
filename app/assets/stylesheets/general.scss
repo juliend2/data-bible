@@ -55,6 +55,18 @@ $portrait: "only screen and (orientation: portrait)";
   width: 33%;
   float: left;
 }
+.lowercase {
+  text-transform: lowercase;
+}
+.padding-top {
+  padding-top: 10px;
+}
+.padding-bottom {
+  padding-bottom: 10px;
+}
+.border-bottom {
+  border-bottom: 1px solid black;
+}
 
 // general
 
