@@ -1,5 +1,6 @@
 <h1><%= t 'notes' %></h1>
 
+<%- found_not_available = false %>
 <div class="content">
   <table>
     <thead>
@@ -19,7 +20,13 @@
           <%- excerpt.verses.each do |verse| %>
             <%= verse.chapter.book.name %> <%= verse.chapter.number %>:<%= verse.number %> 
           <a href="<%= chapter_path(verse.chapter.book.number, verse.chapter.number) %>#verse-<%= verse.number %>">
-            <%= verse.verse_versions.where(version_id: current_version).first.content %>
+            <%- verse_version = verse.verse_versions.where(version_id: current_version).first %>
+            <%- if verse_version %>
+              <%= verse_version.content %>
+            <%- else %>
+              [N/A] *
+              <%- found_not_available = true %>
+            <%- end %>
           </a>
           <br/>
         <%- end %>
@@ -33,4 +40,9 @@
     <%- end %>
     </tbody>
   </table>
+  <%- if found_not_available %>
+    <p class="missing-content-explanation">
+      * <%= t 'verse_warning' %>
+    </p>
+  <%- end %>
 </div>

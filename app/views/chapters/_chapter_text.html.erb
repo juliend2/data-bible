@@ -41,5 +41,7 @@
   <%= render partial: 'chapter_nav', locals: {book: @book, chapter: @chapter} %>
 <br/>
 <%- if found_not_available %>
-  * <%= t 'verse_warning' %>
+  <p class="missing-content-explanation">
+    * <%= t 'verse_warning' %>
+  </p>
 <%- end %>
