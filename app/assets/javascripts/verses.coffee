@@ -87,8 +87,10 @@ class ExcerptEdit
       verses = form.find('.js-excerpt-edit__preview').text().split(', ')
       note = form.find('.js-excerpt-edit__note').val()
       console.log('tags', tags, 'verses', verses)
-      $.post $(e.target).attr('action'),
-        {tags: tags, book: book, chapter: chapter, verses: verses, note: note, excerpt_id: selected_excerpt_id},
+      post_data = {tags: tags, book: book, chapter: chapter, verses: verses, excerpt_id: selected_excerpt_id}
+      if note isnt ''
+        post_data['note'] = note
+      $.post $(e.target).attr('action'), post_data,
         ((data, textStatus, jqXHR)=> $(window.App).trigger('excerpt:created'))
     $('.js-excerpt-delete').on 'click', (e)=>
       e.preventDefault()
