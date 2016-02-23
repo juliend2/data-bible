@@ -80,5 +80,6 @@ end
 # ExcerptVerse.destroy_all
 # Excerpt.destroy_all
 #
-# env JSON_PATH=./db/seed_data/seg21-formatted.json VERSION_SLUG=SG21 rake db:seed
 # env JSON_PATH=./db/seed_data/louis-segond-formatted.json VERSION_SLUG=LSG rake db:seed
+# env JSON_PATH=./db/seed_data/ostervald-1996-formatted.json VERSION_SLUG=OST rake db:seed
+# env JSON_PATH=./db/seed_data/martin-1744-formatted.json VERSION_SLUG=FMAR rake db:seed
