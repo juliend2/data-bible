@@ -159,8 +159,9 @@ class Chapter
     $(window.App).bind('excerpt:created', @update)
     $(window.App).bind('excerpt:deleted', @update)
 
-  update: ()=>
-    $.get "/book/#{@book_number}/chapters/#{@chapter_number}/chapter_only", (data) ->
+  update: (e)=>
+    versions_suffix = if $('.js-versions').length > 0 then "?versions=#{$('.js-versions').val()}" else ""
+    $.get "/book/#{@book_number}/chapters/#{@chapter_number}/chapter_only#{versions_suffix}", (data) ->
       $('.js-chapter-content').html(data)
 
 class App.Verses

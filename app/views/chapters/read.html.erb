@@ -45,6 +45,9 @@
     <div class="js-assign-tag-to-verses">
       <h3><%= t 'assign_tag_to_verses' %></h3>
       <p class="js-excerpt-edit__preview"></p>
+      <%- if params[:versions] %>
+        <input class="js-versions" type="hidden" name="versions" value="<%= params[:versions] %>" />
+      <%- end %>
       <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
       <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
       <p>
