@@ -10,7 +10,7 @@ est libre.
 * Ajout de notes personnelles aux passages sélectionnés
 * Nuage de mots, pour voir quels sont les mots les plus utilisés dans chaque
   livre de la Bible
-* Version Louis Segond (1910) incluse
+* Versions **Louis Segond (1910)**, **Martin (1744)** et **Osterval (1996)** incluses
 
 ### Autres fonctionnalités désirées
 
