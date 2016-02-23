@@ -1,10 +1,20 @@
+<% if defined? @versions %>
+<%  content_for :body_class, "full-width" %>
+<% end %>
+
 <h1><%= @chapter.book.name %>, <span class="lowercase"><%= t 'chapter' %></span> <%= @chapter.number %></h1>
 
-<div class="reader content js-chapter-content">
-  <%= render partial: 'chapter_text', locals: {chapter: @chapter, book: @book, version: @version} %>
-</div>
+<%- if defined? @versions %>
+  <div class="reader content js-chapter-content">
+    <%= render partial: 'chapter_texts', locals: {chapter: @chapter, book: @book, versions: @versions} %>
+  </div>
+<%- else %>
+  <div class="reader content js-chapter-content">
+    <%= render partial: 'chapter_text', locals: {chapter: @chapter, book: @book, version: @version} %>
+  </div>
+<%- end %>
 
-<div class="js-excerpt-edit  excerpt-edit" >
+<div class="js-excerpt-edit  excerpt-edit">
   <!--
   <fieldset class="js-excerpts-edit-box"><%# style="display: none;" %>
     <h2><%= t 'excerpt' %></h2>

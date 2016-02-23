@@ -55,7 +55,7 @@ class Excerpts
     $('.js-verse__text').css(backgroundColor: 'initial', color: 'black')
 
 class ExcerptEdit
-  constructor: (@version_slug, @book_number, @chapter_number, @verse_numbers)->
+  constructor: (@book_number, @chapter_number, @verse_numbers)->
     @jq_element = $('.js-excerpt-edit')
     select = @jq_element.find('.js-excerpt-edit__tags')
     select.chosen()
@@ -152,7 +152,7 @@ class Highlights
         # select
         selected_verses.push($(e.target).data('verse_number'))
       $(window.App).trigger('selected_verses:changed')
-      console.log('verse', $(this).data('version_slug'), $(this).data('book_number'), $(this).data('chapter_number'), $(this).data('verse_number'))
+      # console.log('verse', $(this).data('version_slug'), $(this).data('book_number'), $(this).data('chapter_number'), $(this).data('verse_number'))
 
 class Chapter
   constructor: (@book_number, @chapter_number) ->

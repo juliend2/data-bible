@@ -13,10 +13,14 @@ class ChaptersController < ApplicationController
       map{|excerpt| excerpt.tags }.
       flatten.
       uniq{|t| t.id}
-    @version = current_version
-    unless @version
-      flash[:notice] = "Please choose a Bible version"
-      redirect_to choose_version_path
+    if params[:versions]
+      @versions = params[:versions].split(/,/).map{|version_slug| Version.where(slug: version_slug).first }
+    else
+      @version = current_version
+      unless @version
+        flash[:notice] = "Please choose a Bible version"
+        redirect_to choose_version_path
+      end
     end
     @tags = Tag.order(:name).all
   end
@@ -24,7 +28,11 @@ class ChaptersController < ApplicationController
   def chapter_only
     @book = Book.find_by_number(params[:book_number])
     @chapter = @book.chapters.find_by_number(params[:chapter_number])
-    @version = current_version
+    if params[:versions]
+      @versions = params[:versions].split(/,/).map{|version_slug| Version.where(slug: version_slug).first }
+    else
+      @version = current_version
+    end
     render layout: false
   end
 end

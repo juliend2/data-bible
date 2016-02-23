@@ -76,6 +76,9 @@ body {
   padding: 0 10px;
   background: $background_color;
 }
+body.full-width {
+  max-width: 100%;
+}
 
 .content li {
   list-style: none;
@@ -171,6 +174,14 @@ sup {
 
 .chapter {
   line-height: 1.5em;
+}
+/*table*/.chapter-table {
+  tr {
+    border-bottom: 1px solid $pale_gray;
+    &:hover td {
+      background: $pale_gray;
+    }
+  }
 }
 .chapter-nav {
   a {

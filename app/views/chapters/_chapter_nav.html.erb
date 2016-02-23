@@ -1,13 +1,14 @@
+<%- version_suffix = (defined? @versions) ? '?versions='+params[:versions] : '' %>
 <table width="100%">
   <tr class="chapter-nav">
     <td>
       <%- if @chapter.number != 1 %>
-        <a href="<%= chapter_read_path(@book.number, @chapter.number - 1) %>">&lt; <%= t 'previous' %></a>
+        <a href="<%= chapter_read_path(@book.number, @chapter.number - 1) + version_suffix %>">&lt; <%= t 'previous' %></a>
       <%- end %>
     </td>
     <td align="right">
       <%- if @chapter.number != @book.chapters.size %>
-        <a href="<%= chapter_read_path(@book.number, @chapter.number + 1) %>"><%= t 'next' %> &gt;</a>
+        <a href="<%= chapter_read_path(@book.number, @chapter.number + 1) + version_suffix %>"><%= t 'next' %> &gt;</a>
       <%- end %>
     </td>
   </tr>
