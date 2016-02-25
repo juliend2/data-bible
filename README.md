@@ -10,13 +10,14 @@ est libre.
 * Ajout de notes personnelles aux passages sélectionnés
 * Nuage de mots, pour voir quels sont les mots les plus utilisés dans chaque
   livre de la Bible
-* Versions **Louis Segond (1910)**, **Martin (1744)** et **Osterval (1996)** incluses
+* Traductions **Louis Segond (1910)**, **Martin (1744)** et **Osterval (1996)** incluses
+* Lecture parallèle (côte à côte) de plusieurs traductions de la Bible en même temps
 
 ### Autres fonctionnalités désirées
 
 * Page qui liste les livres et chapitres par auteur présumé
 * Page qui liste les livres et chapitres par époque présumée de rédaction (ordre chronologique)
-* Ajouter l'index de concordances de [Strong](https://en.wikipedia.org/wiki/Strong%27s_Concordance) sur les mots qui s'appliquent. Au moins pour la version Louis Segond qui est actuellement disponible.
+* Ajouter l'index de concordances de [Strong](https://en.wikipedia.org/wiki/Strong%27s_Concordance) sur les mots qui s'appliquent. Au moins pour la traduction Louis Segond qui est actuellement disponible.
 * Outil de recherche plus avancé, entre autre pour:
   * raffiner les résultats selon un livre ou un chapitre en particulier
   * rechercher plusieurs mots qui ne sont pas nécessairement collés
