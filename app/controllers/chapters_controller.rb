@@ -14,7 +14,7 @@ class ChaptersController < ApplicationController
       flatten.
       uniq{|t| t.id}
     @all_versions = Version.all
-    if params[:versions] && params[:versions] != ''
+    if params[:versions] && params[:versions] != '' && params[:versions] != current_version.slug
       @versions = params[:versions].split(/,/).map{|version_slug| Version.where(slug: version_slug).first }
     else
       @version = current_version
