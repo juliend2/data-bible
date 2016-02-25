@@ -14,12 +14,6 @@
       <%- @chapter.verses.each do |verse| %>
         <tr>
           <td class="js-verse  verse">
-          <%- if verse.starts_an_excerpt? %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
-                  href="#"
-                  data-excerpt_id="<%= ex.id %>"
-                  data-excerpt_color="<%= color %>"
-                  class="js-excerpt-start  excerpt-start"
-                  style="color: #<%= color %>;">[</a><%- end %><%- end %>
             <sup>
               <a
                 class="js-verse__number  verse__number"
@@ -32,6 +26,12 @@
           </td>
           <%- @versions.each do |version| %>
             <td>
+              <%- if verse.starts_an_excerpt? %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
+                      href="#"
+                      data-excerpt_id="<%= ex.id %>"
+                      data-excerpt_color="<%= color %>"
+                      class="js-excerpt-start  excerpt-start"
+                      style="color: #<%= color %>;">[</a><%- end %><%- end %>
               <%- verse_version = verse.verse_versions.find_by_version_id(version.id) %>
               <%- unless verse_version %>
                 <%- found_not_available = true %>
