@@ -178,6 +178,9 @@ sup {
 /*table*/.chapter-table {
   tr {
     border-bottom: 1px solid $pale_gray;
+    td {
+      padding-left: 10px;
+    }
     &:hover td {
       background: $pale_gray;
     }
