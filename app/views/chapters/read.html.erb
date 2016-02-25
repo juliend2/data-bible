@@ -14,56 +14,82 @@
   </div>
 <%- end %>
 
-<div class="js-excerpt-edit  excerpt-edit">
-  <!--
-  <fieldset class="js-excerpts-edit-box"><%# style="display: none;" %>
-    <h2><%= t 'excerpt' %></h2>
-    <p>
-      <button class="js-excerpt-delete"><%= t 'delete_excerpt' %></button>
-    </p>
-  </fieldset>
-  -->
-  <h2><%= t 'annotations' %></h2>
-  <div class="">
-    <h3><%= t 'tags_in_this_chapter' %></h3>
-    <p class="tags-in-chapter">
-      <%- @chapter_tags.each do |tag| %>
-        <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
-      <%- end %>
-      <%- if @chapter_tags.empty? %>
-        <i><%= t 'no_tag_yet' %></i>
-      <%- end %>
-    </p>
-    <h3><%= t 'tags_in_selected_excerpt' %></h3>
-    <div class="js-tags-in-excerpt"><!--  style="display: none;" -->
-      <p class="js-list-tags-in-excerpt  tags-in-excerpt">
-        <i><%= t 'please_select_excerpt' %></i>
-      </p>
-    </div>
+<div class="js-excerpt-edit  excerpt-edit  toolbox">
+  <div class="parallel-version-toggle">
+    <form method="get" action="" class="js-parallel-version-toggle">
+      <input type="hidden" name="versions" value="" class="js-versions-hidden-field" />
+      <h2><%= t 'parallel_reading' %></h2>
+      <%- current_version_slugs = (params[:versions] ? params[:versions].split(',') : []) + [current_version.slug] %>
+      <ul>
+        <%- @all_versions.each do |v| %>
+          <li>
+            <label>
+              <input
+                type="checkbox"
+                <%= current_version == v ? 'disabled="disabled"' : ''%>
+                <%= current_version_slugs.include?(v.slug) ? 'checked="checked"' : '' %>
+                class="js-versions-checkbox"
+                value="<%= v.slug %>" />
+              <%= v.name %>
+            </label>
+          </li>
+        <%- end %>
+      </ul>
+      <input type="submit" />
+    </form>
+    <br/>
   </div>
-  <form action="<%= tags_assign_path %>" class="js-excerpt-note-edit">
-    <div class="js-assign-tag-to-verses">
-      <h3><%= t 'assign_tag_to_verses' %></h3>
-      <p class="js-excerpt-edit__preview"></p>
-      <%- if params[:versions] %>
-        <input class="js-versions" type="hidden" name="versions" value="<%= params[:versions] %>" />
-      <%- end %>
-      <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
-      <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
+  <div class="excerpt-edit">
+    <!--
+    <fieldset class="js-excerpts-edit-box"><%# style="display: none;" %>
+      <h2><%= t 'excerpt' %></h2>
       <p>
-        <select class="js-excerpt-edit__tags  excerpt-edit__tags" multiple="multiple">
-          <%- @tags.each do |tag| %>
-            <option value="<%= tag.name %>"><%= tag.name %></option>
-          <%- end %>
-        </select>
+        <button class="js-excerpt-delete"><%= t 'delete_excerpt' %></button>
       </p>
-      <h3><%= t 'note' %></h3>
-      <%= text_area_tag(:note, "", size: "27x6", class: 'js-excerpt-edit__note') %>
-      <p>
-        <input type="submit" name="submit" value="<%= t 'save' %>" />
+    </fieldset>
+    -->
+    <h2><%= t 'annotations' %></h2>
+    <div class="">
+      <h3><%= t 'tags_in_this_chapter' %></h3>
+      <p class="tags-in-chapter">
+        <%- @chapter_tags.each do |tag| %>
+          <a href="<%= tags_show_path(tag.id) %>" class="js-tags-in-chapter__tag  tags-in-chapter__tag"><%= tag.name %></a>
+        <%- end %>
+        <%- if @chapter_tags.empty? %>
+          <i><%= t 'no_tag_yet' %></i>
+        <%- end %>
       </p>
+      <h3><%= t 'tags_in_selected_excerpt' %></h3>
+      <div class="js-tags-in-excerpt"><!--  style="display: none;" -->
+        <p class="js-list-tags-in-excerpt  tags-in-excerpt">
+          <i><%= t 'please_select_excerpt' %></i>
+        </p>
+      </div>
     </div>
-  </form>
+    <form action="<%= tags_assign_path %>" class="js-excerpt-note-edit">
+      <div class="js-assign-tag-to-verses">
+        <h3><%= t 'assign_tag_to_verses' %></h3>
+        <p class="js-excerpt-edit__preview"></p>
+        <%- if params[:versions] %>
+          <input class="js-versions" type="hidden" name="versions" value="<%= params[:versions] %>" />
+        <%- end %>
+        <input class="js-excerpt-edit__book" type="hidden" name="book" value="<%= @chapter.book.number %>" />
+        <input class="js-excerpt-edit__chapter" type="hidden" name="chapter" value="<%= @chapter.number %>" />
+        <p>
+          <select class="js-excerpt-edit__tags  toolbox__tags" multiple="multiple">
+            <%- @tags.each do |tag| %>
+              <option value="<%= tag.name %>"><%= tag.name %></option>
+            <%- end %>
+          </select>
+        </p>
+        <h3><%= t 'note' %></h3>
+        <%= text_area_tag(:note, "", size: "27x6", class: 'js-excerpt-edit__note') %>
+        <p>
+          <input type="submit" name="submit" value="<%= t 'save' %>" />
+        </p>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script>

@@ -152,7 +152,6 @@ class Highlights
         # select
         selected_verses.push($(e.target).data('verse_number'))
       $(window.App).trigger('selected_verses:changed')
-      # console.log('verse', $(this).data('version_slug'), $(this).data('book_number'), $(this).data('chapter_number'), $(this).data('verse_number'))
 
 class Chapter
   constructor: (@book_number, @chapter_number) ->
@@ -164,6 +163,12 @@ class Chapter
     $.get "/book/#{@book_number}/chapters/#{@chapter_number}/chapter_only#{versions_suffix}", (data) ->
       $('.js-chapter-content').html(data)
 
+class ParallelVersionToggle
+  constructor: ()->
+    $('.js-versions-checkbox').on 'change', (e)=>
+      $('.js-versions-hidden-field').val($('.js-versions-checkbox:checked').map(()->$(this).val()).toArray().join(','))
+
+
 class App.Verses
   constructor: (book_number, chapter_number)->
     excerptEditor = new ExcerptEdit()
@@ -171,3 +176,4 @@ class App.Verses
     excerpts = new Excerpts()
     tags_in_excerpt = new TagsInExcerpt()
     chapter = new Chapter(book_number, chapter_number)
+    parallel_toggle = new ParallelVersionToggle()
