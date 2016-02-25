@@ -223,6 +223,24 @@ sup {
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  body.full-width .content.reader {
+    width: 76%;
+  }
+  body.full-width .toolbox {
+    width: 22%;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  body.full-width .content.reader {
+    width: 81%;
+  }
+  body.full-width .toolbox {
+    width: 16%;
+  }
+}
+
 .toolbox__tags {
   width: 240px;
 }
