@@ -46,7 +46,7 @@
 <a href="doc/db_versions.gif"><img src="doc/db_versions.gif" width="300px" /></a>
 </div>
 
-#### Plusieurs traductions françaises disponibles
+#### Mode de lecture parallèle
 
 <div>
 <a href="doc/db_lecture_parallele.gif"><img src="doc/db_lecture_parallele.gif" width="300px" /></a>
