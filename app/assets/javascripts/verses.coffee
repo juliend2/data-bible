@@ -19,11 +19,14 @@ unselect_all_tags = (select)->
 reset_note_content = ->
   $('.js-excerpt-edit__note').val('') # reset the note
 
+reset_all_colors = ()->
+  $('.js-verse__text').css(backgroundColor: 'initial', color: 'black')
+
 class TagsInExcerpt
   constructor: ()->
     @select = $('.js-excerpt-edit__tags')
     $(window.App).bind('excerpts:selected', @update)
-    $(window.App).bind('excerpts:unselected', @update)
+    $(window.app).bind('excerpts:unselected', @update)
     $(window.App).bind('selected_verses:changed', @update)
 
   update: ()=>
@@ -49,21 +52,23 @@ class TagsInExcerpt
 
 class Excerpts
   constructor: ()->
+    $(window.App).bind('excerpts:unselected', reset_all_colors)
     $('.js-chapter-content').on 'click', '.js-excerpt-start, .js-excerpt-end', (e)=>
       e.preventDefault()
       id = $(e.target).data('excerpt_id')
       color = $(e.target).data('excerpt_color')
-      @reset_all_colors()
+      reset_all_colors()
       if selected_excerpt_id == id
         selected_excerpt_id = null
+        selected_verses = []
+        $(window.App).trigger('selected_verses:changed')
         $(window.App).trigger('excerpts:unselected')
       else
-        selected_excerpt_id = id
+        selected_verses = []
+        $(window.App).trigger('selected_verses:changed')
         $(".js-in-excerpt-#{id}").css(backgroundColor: "##{color}")
+        selected_excerpt_id = id
         $(window.App).trigger('excerpts:selected')
-
-  reset_all_colors: ()->
-    $('.js-verse__text').css(backgroundColor: 'initial', color: 'black')
 
 class ExcerptEdit
   constructor: (@book_number, @chapter_number, @verse_numbers)->
@@ -160,6 +165,8 @@ class Highlights
         console.log('NOT selected')
         # select
         selected_verses.push($(e.target).data('verse_number'))
+      selected_excerpt_id = null
+      $(window.App).trigger('excerpts:unselected')
       $(window.App).trigger('selected_verses:changed')
 
 class Chapter
