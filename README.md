@@ -12,7 +12,41 @@
 * Traductions **Louis Segond (1910)**, **Martin (1744)** et **Osterval (1996)** incluses
 * Lecture parallèle (côte à côte) de plusieurs traductions de la Bible en même temps
 
-### Autres fonctionnalités désirées
+### Captures d'écran
+
+<figure>
+<a href="doc/db_searchresults.gif"><img src="doc/db_searchresults.gif" width="300px" /></a>
+<figcaption>Outil de recherche de versets</figcaption>
+</figure>
+
+<figure>
+<a href="doc/db_tagger.gif"><img src="doc/db_tagger.gif" width="300px" /></a>
+<a href="doc/db_tags.gif"><img src="doc/db_tags.gif" width="300px" /></a>
+<figcaption>Étiquetter des passages de la Bible</figcaption>
+</figure>
+
+<figure>
+<a href="doc/db_annoter.gif"><img src="doc/db_annoter.gif" width="300px" /></a>
+<a href="doc/db_notes.gif"><img src="doc/db_notes.gif" width="300px" /></a>
+<figcaption>Outil de recherche de versets</figcaption>
+</figure>
+
+<figure>
+<a href="doc/db_wordcloud.gif"><img src="doc/db_wordcloud.gif" width="300px" /></a>
+<figcaption>Nuage de mots populaires pour chaque livre</figcaption>
+</figure>
+
+<figure>
+<a href="doc/db_versions.gif"><img src="doc/db_versions.gif" width="300px" /></a>
+<figcaption>Plusieurs traductions françaises disponibles</figcaption>
+</figure>
+
+<figure>
+<a href="doc/db_lecture_parallele.gif"><img src="doc/db_lecture_parallele.gif" width="300px" /></a>
+<figcaption>Plusieurs traductions françaises disponibles</figcaption>
+</figure>
+
+### Fonctionnalités futures
 
 * Page qui liste les livres et chapitres par auteur présumé
 * Page qui liste les livres et chapitres par époque présumée de rédaction (ordre chronologique)
