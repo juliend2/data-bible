@@ -15,7 +15,7 @@
     </thead>
     <tbody>
     <%- @excerpts_with_notes.each do |excerpt| %>
-      <tr class="border-top">
+      <tr class="border-top" data-excerpt-id="<%= excerpt.id %>">
         <td class="padding-top padding-bottom">
           <%- excerpt.verses.each do |verse| %>
             <%= verse.chapter.book.name %> <%= verse.chapter.number %>:<%= verse.number %> 
