@@ -22,6 +22,7 @@
 </figure>
 </div>
 
+<br>
 <div>
 <figure>
 <a href="doc/db_tagger.gif"><img src="doc/db_tagger.gif" width="300px" /></a>
@@ -31,6 +32,7 @@
 </figure>
 </div>
 
+<br>
 <div>
 <figure>
 <a href="doc/db_annoter.gif"><img src="doc/db_annoter.gif" width="300px" /></a>
@@ -40,6 +42,7 @@
 </figure>
 </div>
 
+<br>
 <div>
 <figure>
 <a href="doc/db_wordcloud.gif"><img src="doc/db_wordcloud.gif" width="300px" /></a>
@@ -48,6 +51,7 @@
 </figure>
 </div>
 
+<br>
 <div>
 <figure>
 <a href="doc/db_versions.gif"><img src="doc/db_versions.gif" width="300px" /></a>
@@ -56,6 +60,7 @@
 </figure>
 </div>
 
+<br>
 <div>
 <figure>
 <a href="doc/db_lecture_parallele.gif"><img src="doc/db_lecture_parallele.gif" width="300px" /></a>
