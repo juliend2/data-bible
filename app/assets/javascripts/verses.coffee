@@ -11,8 +11,14 @@ pluck = (arr, prop)->
   $.map arr, (o)->
     return o[prop]
 
+unselect_all_tags = (select)->
+  select.find('option').each ()->
+    $(this).prop('selected', false)
+  select.trigger('chosen:updated')
+
 class TagsInExcerpt
   constructor: ()->
+    @select = $('.js-excerpt-edit__tags')
     $(window.App).bind('excerpts:selected', @update)
     $(window.App).bind('excerpts:unselected', @update)
     $(window.App).bind('selected_verses:changed', @update)
@@ -21,14 +27,14 @@ class TagsInExcerpt
     console.log('selected_excerpt_id', selected_excerpt_id)
     if selected_excerpt_id is null
       $('.js-list-tags-in-excerpt').html("<i>Please select an excerpt</i>")
+      unselect_all_tags(@select)
     else
-      $.get "/excerpts/#{selected_excerpt_id}/tags", (data) ->
+      $.get "/excerpts/#{selected_excerpt_id}/tags", (data) =>
         $('.js-list-tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
-        select = $('.js-excerpt-edit__tags')
-        select.find('option').each ()->
+        @select.find('option').each ()->
           if $.inArray($(this).val(), pluck(data, 'name')) != -1
             $(this).prop('selected', true)
-        select.trigger('chosen:updated')
+        @select.trigger('chosen:updated')
       $.get "/excerpts/#{selected_excerpt_id}/note", (data) ->
         $('.js-excerpt-edit__note').val(data)
     if selected_verses.length > 0
@@ -135,9 +141,7 @@ class Highlights
     selected_verses = []
     $(window.App).trigger('selected_verses:changed')
     select = $('.js-excerpt-edit__tags')
-    select.find('option').each ()->
-      $(this).prop('selected', false)
-    select.trigger('chosen:updated')
+    unselect_all_tags(select)
     $('.js-excerpt-edit__note').val('')
 
   init_click: ()->
