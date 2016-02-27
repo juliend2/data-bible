@@ -16,6 +16,9 @@ unselect_all_tags = (select)->
     $(this).prop('selected', false)
   select.trigger('chosen:updated')
 
+reset_note_content = ->
+  $('.js-excerpt-edit__note').val('') # reset the note
+
 class TagsInExcerpt
   constructor: ()->
     @select = $('.js-excerpt-edit__tags')
@@ -28,6 +31,7 @@ class TagsInExcerpt
     if selected_excerpt_id is null
       $('.js-list-tags-in-excerpt').html("<i>Please select an excerpt</i>")
       unselect_all_tags(@select)
+      reset_note_content()
     else
       $.get "/excerpts/#{selected_excerpt_id}/tags", (data) =>
         $('.js-list-tags-in-excerpt').html(data.map((tag)-> "<a href='/tags/#{tag.id}/show'>#{tag.name}</a>").join(' '))
@@ -40,6 +44,7 @@ class TagsInExcerpt
     if selected_verses.length > 0
       $('.js-assign-tag-to-verses').show()
     else
+      reset_note_content()
       console.log('NE PAS montrer la note')
 
 class Excerpts
