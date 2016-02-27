@@ -14,37 +14,49 @@
 
 ### Captures d'écran
 
+<div>
 <figure>
 <a href="doc/db_searchresults.gif"><img src="doc/db_searchresults.gif" width="300px" /></a>
 <figcaption>Outil de recherche de versets</figcaption>
 </figure>
+</div>
 
+<div>
 <figure>
 <a href="doc/db_tagger.gif"><img src="doc/db_tagger.gif" width="300px" /></a>
 <a href="doc/db_tags.gif"><img src="doc/db_tags.gif" width="300px" /></a>
 <figcaption>Étiquetter des passages de la Bible</figcaption>
 </figure>
+</div>
 
+<div>
 <figure>
 <a href="doc/db_annoter.gif"><img src="doc/db_annoter.gif" width="300px" /></a>
 <a href="doc/db_notes.gif"><img src="doc/db_notes.gif" width="300px" /></a>
 <figcaption>Outil de recherche de versets</figcaption>
 </figure>
+</div>
 
+<div>
 <figure>
 <a href="doc/db_wordcloud.gif"><img src="doc/db_wordcloud.gif" width="300px" /></a>
 <figcaption>Nuage de mots populaires pour chaque livre</figcaption>
 </figure>
+</div>
 
+<div>
 <figure>
 <a href="doc/db_versions.gif"><img src="doc/db_versions.gif" width="300px" /></a>
 <figcaption>Plusieurs traductions françaises disponibles</figcaption>
 </figure>
+</div>
 
+<div>
 <figure>
 <a href="doc/db_lecture_parallele.gif"><img src="doc/db_lecture_parallele.gif" width="300px" /></a>
 <figcaption>Plusieurs traductions françaises disponibles</figcaption>
 </figure>
+</div>
 
 ### Fonctionnalités futures
 
