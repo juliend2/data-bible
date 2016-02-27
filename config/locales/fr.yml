@@ -14,8 +14,8 @@ fr:
   previous: 'Précédent'
   next: 'Suivant'
   choose: 'Choisir'
-  tags_in_this_chapter: 'Tags dans ce chapitre'
-  tags_in_selected_excerpt: 'Tags dans le passage sélectionné'
+  tags_in_this_chapter: 'Étiquettes dans ce chapitre'
+  tags_in_selected_excerpt: 'Étiquettes dans le passage sélectionné'
   in_this_chapter: 'Dans ce chapitre'
   excerpt: "Passage"
   excerpts_with_tag: "Passages avec l'étiquette"
