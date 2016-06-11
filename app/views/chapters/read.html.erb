@@ -30,7 +30,7 @@
                 <%= current_version_slugs.include?(v.slug) ? 'checked="checked"' : '' %>
                 class="js-versions-checkbox"
                 value="<%= v.slug %>" />
-              <%= v.name %>
+                <a href="?versions=<%= v.slug %>"><%= v.name %></a>
             </label>
           </li>
         <%- end %>

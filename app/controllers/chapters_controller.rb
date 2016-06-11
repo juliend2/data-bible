@@ -15,7 +15,15 @@ class ChaptersController < ApplicationController
       uniq{|t| t.id}
     @all_versions = Version.all
     if params[:versions] && params[:versions] != '' && params[:versions] != current_version.slug
-      @versions = params[:versions].split(/,/).map{|version_slug| Version.where(slug: version_slug).first }
+      version_slugs = params[:versions].split(/,/)
+      if version_slugs.size > 1
+        @versions = version_slugs.map{|version_slug| Version.where(slug: version_slug).first }
+      else
+        @version = Version.where(slug: version_slugs.first).first
+        # We understand that we are in effect switching to another version
+        @current_version = @version
+        session[:current_version_id] = @version.id
+      end
     else
       @version = current_version
       unless @version
