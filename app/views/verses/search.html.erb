@@ -12,7 +12,7 @@
     </p>
     <p>
       <label for="search_scope"><%= t 'search.book_scope' %>:</label><br/>
-      <%= select_tag 'book_id', options_for_select(@books.collect{ |b| [b.name, b.id] }, params[:book_id]), multiple: true, id: 'search_scope' %>
+      <%= select_tag 'book_id', options_for_select(@books.collect{ |b| [b.name, b.id] }, params[:book_id]), multiple: true, id: 'search_scope', style: 'height: 200px;' %>
     </p>
     <p>
       <input type="submit" value="<%= t 'search.search' %>" />
