@@ -6,9 +6,17 @@
 
 <div class="content full-width">
   <form method="get" action="<%= verse_search_path %>" class="content">
-    <input type="text" name="query" value="<%= @query %>" />
-    <%= select_tag 'book_id', options_for_select([[t('search.book_scope'), nil]] + @books.collect{ |b| [b.name, b.id] }, params[:book_id]) %>
-    <input type="submit" value="<%= t 'search.search' %>" />
+    <p>
+      <label for="search_query"><%= t 'search.query' %>:</label><br/>
+      <input type="text" name="query" id="search_query" value="<%= @query %>" />
+    </p>
+    <p>
+      <label for="search_scope"><%= t 'search.book_scope' %>:</label><br/>
+      <%= select_tag 'book_id', options_for_select(@books.collect{ |b| [b.name, b.id] }, params[:book_id]), multiple: true, id: 'search_scope' %>
+    </p>
+    <p>
+      <input type="submit" value="<%= t 'search.search' %>" />
+    </p>
   </form>
 
   <%- if @verse_versions.size > 0 %>

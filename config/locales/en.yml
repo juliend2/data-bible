@@ -35,6 +35,7 @@ en:
   search:
     found: 'Found'
     search: 'Search'
+    query: 'Search term'
     results: 'results'
     verses_with: 'verses with'
     book_scope: 'Search in a book'
