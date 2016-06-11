@@ -7,6 +7,7 @@
 <div class="content full-width">
   <form method="get" action="<%= verse_search_path %>" class="content">
     <input type="text" name="query" value="<%= @query %>" />
+    <%= select_tag 'book_id', options_for_select([[t('search.book_scope'), nil]] + @books.collect{ |b| [b.name, b.id] }, params[:book_id]) %>
     <input type="submit" value="<%= t 'search.search' %>" />
   </form>
 
