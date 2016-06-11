@@ -9,7 +9,7 @@ module ApplicationHelper
     Rails.application.routes.url_helpers.chapter_read_path(book_number, chapter_number)
   end
 
-  def word_cloud(words)
+  def word_cloud(book_id, words)
     html = ''
     html += "<ul class='word-cloud'>"
     higher_bound = words.first.last
@@ -30,7 +30,7 @@ module ApplicationHelper
                    when large...x_large then 'x-large'
                    else 'xx-large'
                    end
-      html += "<li class='#{size_class}'><a href='/verses?query=#{word}'>" + word + "</a></li>"
+      html += "<li class='#{size_class}'><a href='/verses?query=#{word}&book_id[]=#{book_id}'>" + word + "</a></li>"
     end
     html += "</ul>"
     html
