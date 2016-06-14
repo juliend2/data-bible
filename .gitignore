@@ -21,3 +21,4 @@
 .byebug_history
 
 /db/seed_data/seg21-formatted.json
+/db/seed_data/semeur-formatted.json
