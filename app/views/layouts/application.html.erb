@@ -17,11 +17,22 @@
     <li><a href="<%= verse_search_path %>"><%= t 'search_verses' %></a></li>
     <li><a href="<%= choose_version_path %>"><%= t 'version' %>: <%= current_version.name %></a></li>
     <li><a href="?locale=<%= I18n.locale == :fr ? :en : :fr %>"><%= locale_to_human_language_name(current_locale.to_sym == :fr ? :en : :fr) %></a></li>
+    <% if user_signed_in? %>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+      </li>
+    <% else %>
+      <li>
+      <%= link_to('Login', new_user_session_path)  %>  
+      </li>
+    <% end %>
   </ul>
 </nav>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="flash">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
 
 <%= yield %>
 

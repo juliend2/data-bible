@@ -79,7 +79,17 @@ body {
 body.full-width {
   max-width: 100%;
 }
-
+.flash {
+  float: left;
+  clear: both;
+  width: 100%;
+  .notice {
+    background-color: #C7FFD4;
+  }
+  .alert {
+    background-color: #FFF0C7;
+  }
+}
 .content li {
   list-style: none;
 }
