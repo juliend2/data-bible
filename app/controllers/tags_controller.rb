@@ -19,10 +19,15 @@ class TagsController < ApplicationController
       book = chapter.book
       path = Rails.application.routes.url_helpers.chapter_read_path(book.number, chapter.number)
       @excerpts_with_text << excerpt.verses.map{|ver|
-        text = VerseVersion.where(verse_id: ver.id, version_id: version.id).first.content
-        verse_number = ver.number
-        chapter = ver.chapter
-        {path: path, verse_number: verse_number, chapter: chapter, text: text}
+        verse_version = VerseVersion.where(verse_id: ver.id, version_id: version.id).first
+        if verse_version
+          text = verse_version.content
+          verse_number = ver.number
+          chapter = ver.chapter
+          {path: path, verse_number: verse_number, chapter: chapter, text: text}
+        else
+          nil
+        end
       }
     end
     @excerpts_with_text

@@ -4,7 +4,9 @@
 <%- @excerpts_with_text.each do |excerpt| %>
   <p>
     <%- excerpt.each do |verse| %>
-      <%= verse[:chapter].book.name %> <%= verse[:chapter].number %>:<%= verse[:verse_number] %>  <a href="<%= verse[:path] %>#verse-<%= verse[:verse_number] %>"><%= verse[:text] %></a><br/>
+      <%- if verse %>
+        <%= verse[:chapter].book.name %> <%= verse[:chapter].number %>:<%= verse[:verse_number] %>  <a href="<%= verse[:path] %>#verse-<%= verse[:verse_number] %>"><%= verse[:text] %></a><br/>
+      <%- end %>
     <%- end %>
   </p>
   <hr/>
