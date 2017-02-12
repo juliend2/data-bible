@@ -4,7 +4,7 @@
   <%- @books.each do |book| %>
     <li><%= book.name %>
       <ul>
-        <%- book.chapters.each do |chapter| %>
+        <%- book.chapters.sort_by(&:number).each do |chapter| %>
           <li><a href="<%= chapter_read_path(book.number, chapter.number) %>"><%= chapter.number %></a></li>
         <%- end %>
       </ul>
