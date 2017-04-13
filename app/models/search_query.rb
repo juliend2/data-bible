@@ -1,6 +1,11 @@
 class SearchQuery
+  QUOTED_STRING = :QUOTED_STRING
+  STRING = :STRING
+  OR = :OR
+  AND = :AND
+  NEGATIVE_MATCH = :NEGATIVE_MATCH
+
   class Lexer
-    # KEYWORDS = ["def", "class", "if", "true", "false", "nil"]
     
     def tokenize(code)
       # Cleanup code by remove extra line breaks
@@ -18,19 +23,27 @@ class SearchQuery
         chunk = code[i..-1]
         
         if string = chunk[/\A"(.*?)"/, 1]
-          tokens << [:QUOTED_STRING, string]
+          tokens << [QUOTED_STRING, string]
           i += string.size + 2
-        
+
         # Match long operators such as ||, &&, ==, !=, <= and >=.
         # One character long operators are matched by the catch all `else` at the bottom.
         elsif operator = chunk[/\A(\|\||&&|==|!=|<=|>=)/, 1]
           operator_keyword = case operator
-          when '||' then :OR
-          when '&&' then :AND
+          when '||' then OR
+          when '&&' then AND
           end
           tokens << [operator_keyword, operator]
           i += operator.size
         
+        # detect negative match
+        elsif string = chunk[/\A(-)/, 1]
+          byebug
+          puts "matched negative operator"
+          puts string
+          tokens << [NEGATIVE_MATCH, string]
+          i += 1
+
         # Ignore whitespace
         elsif chunk.match(/\A /)
           i += 1
@@ -39,8 +52,8 @@ class SearchQuery
         # We treat all other single characters as a token. Eg.: ( ) , . ! + - <
         else
           value = chunk[0,1]
-          if tokens.empty? || tokens.last[0] != :STRING
-            tokens << [:STRING, value]
+          if tokens.empty? || tokens.last[0] != STRING
+            tokens << [STRING, value]
           else
             tokens.last[1] << value
           end
@@ -65,13 +78,25 @@ class SearchQuery
 
   def to_sql
     str = ''
-    @tokens.each do |type, value|
-      if type == :STRING || type == :QUOTED_STRING
+    while @tokens.size > 0
+    # @tokens.each_with_index do |token, i|
+      token = @tokens.first
+      (type, value) = token
+      if type == STRING || type == QUOTED_STRING
         str << "#{@column} LIKE '%#{value}%'"
-      elsif type == :OR
+        @tokens.shift
+      elsif type == NEGATIVE_MATCH
+        negative_match = @tokens[1]
+        str << "#{@column} NOT LIKE '%#{negative_match}%'"
+        @tokens.shift(2)
+      elsif type == OR
         str << " OR "
-      elsif type == :AND
+        @tokens.shift
+      elsif type == AND
         str << " AND "
+        @tokens.shift
+      else
+        @tokens.shift
       end
     end
     str

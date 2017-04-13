@@ -1,5 +1,7 @@
 class Book < ActiveRecord::Base
   has_many :chapters
+  has_many :authors_books
+  has_many :authors, through: :authors_books
 
   def words_by_popularity(version)
     max_word_per_book = 20
