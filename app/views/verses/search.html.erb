@@ -36,7 +36,7 @@
           </a>
         </dt>
         <dd>
-        <%= raw verse_version.content.gsub(@query, "<mark>#{@query}</mark>") %>
+        <%= raw verse_version.content.gsub(/(#{@query})/i, "<mark>#{$1}</mark>") %>
         </dd>
       <%- end %>
     </dl>
