@@ -48,6 +48,15 @@ $portrait: "only screen and (orientation: portrait)";
 
 // useful classes
 
+.float {
+  float: left;
+}
+.left-spacing {
+  margin-left: 20px;
+}
+.multiselectbox {
+  min-width: 150px;
+}
 .full-width {
   width: 100%;
 }
@@ -346,3 +355,4 @@ sup {
 .missing-content-explanation {
   font-size: 13px;
 }
+

@@ -10,9 +10,13 @@
       <label for="search_query"><%= t 'search.query' %>:</label><br/>
       <input type="text" name="query" id="search_query" value="<%= @query %>" />
     </p>
-    <p>
+    <p class="float">
       <label for="search_scope"><%= t 'search.book_scope' %>:</label><br/>
-      <%= select_tag 'book_id', options_for_select(@books.collect{ |b| [b.name, b.id] }, params[:book_id]), multiple: true, id: 'search_scope', style: 'height: 200px;' %>
+      <%= select_tag 'book_id', options_for_select(@books.collect{ |b| [b.name, b.id] }, params[:book_id]), multiple: true, class: 'multiselectbox', id: 'search_scope', style: 'height: 200px;' %>
+    </p>
+    <p class="float  left-spacing">
+      <label for="author_scope"><%= t 'search.author_scope' %>:</label><br/>
+      <%= select_tag 'author_id', options_for_select(@authors.collect{ |b| [b.name, b.id] }, params[:author_id]), multiple: true, class: 'multiselectbox', id: 'author_scope', style: 'height: 200px;' %>
     </p>
     <p>
       <input type="submit" value="<%= t 'search.search' %>" />
