@@ -4,7 +4,8 @@
 
 ## Fonctionnalités
 
-* Outil de recherche de versets, avec opérateurs booléens (&& et ||)
+* Outil de recherche de versets, avec opérateurs booléens (&& et ||), par livre
+  ou par auteur
 * Étiquettage (tagging) de passages (groupes de versets) pour une catégorisation flexible
 * Ajout de notes personnelles aux passages sélectionnés
 * Nuage de mots, pour voir quels sont les mots les plus utilisés dans chaque
