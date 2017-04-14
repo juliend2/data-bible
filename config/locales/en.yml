@@ -1,5 +1,6 @@
 en:
   chapter: "Chapter"
+  authors: 'Authors'
   select_a_book_chapter: "Select a Book and a Chapter"
   book_chapter: 'Books & Chapters'
   annotations: 'Annotations'

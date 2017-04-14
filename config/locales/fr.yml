@@ -1,5 +1,6 @@
 fr:
   chapter: "Chapitre"
+  authors: 'Auteurs'
   select_a_book_chapter: "Sélectionnez un livre et un chapitre"
   book_chapter: 'Livres et Chapitres'
   annotations: 'Annotations'
