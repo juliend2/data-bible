@@ -1,0 +1,12 @@
+<dl class="content">
+  <%- @authors.each do |author| %>
+    <dt class="author__name">
+      <%= link_to author.name, author %>
+      </dt>
+      <dd class="books">
+        <%- author.books.each do |book| %>
+          <a class="book__name" href="<%= chapter_path(book.number, 1) %>"><%= book.name %></a>
+        <%- end %>
+      </dd>
+  <%- end %>
+</dl>

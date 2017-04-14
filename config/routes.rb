@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
+  get '/books_by_author', to: 'authors#books', as: 'books_by_author'
+
   get 'excerpts/index'
   get 'excerpts/show'
 

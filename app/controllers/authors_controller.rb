@@ -7,6 +7,10 @@ class AuthorsController < ApplicationController
     @authors = Author.all
   end
 
+  def books
+    @authors = Author.books_by_authors
+  end
+
   # GET /authors/1
   # GET /authors/1.json
   def show
