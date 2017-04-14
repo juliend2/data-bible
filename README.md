@@ -44,7 +44,7 @@
 #### Outil de recherche de versets
 
 <div>
-<a href="doc/db_searchresults.gif"><img src="doc/db_searchresults.gif" width="300px" /></a>
+<a href="doc/db_searchresults.png"><img src="doc/db_searchresults.png" width="300px" /></a>
 </div>
 
 #### Plusieurs traductions françaises disponibles
