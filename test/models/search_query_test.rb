@@ -12,8 +12,12 @@ class SearchQueryTest < ActiveSupport::TestCase
 
   test "returned SQL conditions" do
     @query = SearchQuery.new 'joie || poulet'
-    puts @query.to_sql
-    assert @query.to_sql == "verse_versions.content LIKE '%joie%' OR verse_versions.content LIKE '%poulet%'"
+    assert_equal "verse_versions.content LIKE '%joie%' OR verse_versions.content LIKE '%poulet%'", @query.to_sql, "Not the same"
+  end
+
+  test "handles parentheses" do
+    @query = SearchQuery.new "joie && (Jésus || Christ)"
+    assert_equal "verse_versions.content LIKE '%joie%' AND (verse_versions.content LIKE '%Jésus%' OR verse_versions.content LIKE '%Christ%')", @query.to_sql, "Not the same"
   end
 
 end

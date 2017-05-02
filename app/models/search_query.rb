@@ -4,6 +4,8 @@ class SearchQuery
   OR = :OR
   AND = :AND
   NEGATIVE_MATCH = :NEGATIVE_MATCH
+  LEFT_PAREN = :LEFT_PAREN
+  RIGHT_PAREN = :RIGHT_PAREN
 
   class Lexer
     
@@ -36,12 +38,13 @@ class SearchQuery
           tokens << [operator_keyword, operator]
           i += operator.size
         
-        # detect negative match
-        elsif string = chunk[/\A(-)/, 1]
-          byebug
-          puts "matched negative operator"
-          puts string
-          tokens << [NEGATIVE_MATCH, string]
+        elsif parenthese = chunk[/\A(\(|\))/, 1]
+          paren = if parenthese == '('
+            LEFT_PAREN
+          elsif parenthese == ')'
+            RIGHT_PAREN
+          end
+          tokens << [paren, parenthese]
           i += 1
 
         # Ignore whitespace
@@ -89,6 +92,9 @@ class SearchQuery
         negative_match = @tokens[1]
         str << "#{@column} NOT LIKE '%#{negative_match}%'"
         @tokens.shift(2)
+      elsif type == LEFT_PAREN || type == RIGHT_PAREN
+        str << "#{value}"
+        @tokens.shift
       elsif type == OR
         str << " OR "
         @tokens.shift
