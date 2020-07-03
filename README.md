@@ -63,10 +63,10 @@
 * Outil de recherche plus avancé, entre autre pour:
   * exclure certains mots des résultats de recherche
 
-## Configuration requise
+## Pré-requis
 
-* Système d'exploitation Mac OS X ou Linux
-* Ruby >= 1.9.3
+* Docker
+* Docker compose
 
 ## Installation
 
@@ -74,7 +74,8 @@
 2. `cd data-bible`
 3. `bundle install`
 4. `rake db:migrate`
-5. `env JSON_PATH=./db/seed_data/louis-segond-formatted.json VERSION_SLUG=LSG rake db:seed`
+5. `rake db:seed` to first create the Authors and Books that will be associated with the data we will import in the next step
+6. `env JSON_PATH=./db/seed_data/louis-segond-formatted.json VERSION_SLUG=LSG rake db:seed`
 
 ## Lancer l'application
 

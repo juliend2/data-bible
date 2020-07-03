@@ -75,12 +75,27 @@ book_names = {
  "Jude"=> ['Jude'],
  "Apocalypse"=> ["Jean l'ancien"],
 }
+book_number = 1
 book_names.each do |book_name, author_names|
   book = Book.find_by_name(book_name)
+  p book.inspect
+  if book.nil?
+    puts "NO BOOKO"
+    book = Book.new(number: book_number, name: book_name)
+  end
   authors = []
+  puts author_names.inspect
   author_names.each do |author_name|
-    authors << Author.find_by_name(author_name)
+    a = Author.find_by_name(author_name)
+    authors <<
+      if a
+        a
+      else
+        Author.create(name: author_name)
+      end
   end
   book.authors = authors
   book.save
+
+  book_number += 1
 end
