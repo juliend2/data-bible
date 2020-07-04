@@ -79,7 +79,7 @@
 
 ## Lancer l'application
 
-1. `rails server`
+1. `docker-compose up`
 2. Ouvrir [http://localhost:3000/](http://localhost:3000/) dans votre
    navigateur.
 
