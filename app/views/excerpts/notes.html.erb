@@ -2,6 +2,7 @@
 
 <%- found_not_available = false %>
 <div class="content">
+  <%- if @excerpts_with_notes %>
   <table>
     <thead>
       <tr>
@@ -40,6 +41,9 @@
     <%- end %>
     </tbody>
   </table>
+  <%- else %>
+    No note available.
+  <%- end %>
   <%- if found_not_available %>
     <p class="missing-content-explanation">
       * <%= t 'verse_warning' %>

@@ -36,7 +36,9 @@
           </a>
         </dt>
         <dd>
-        <%= raw verse_version.content.gsub(/(#{@query})/i, "<mark>#{$1}</mark>") %>
+        <%= raw verse_version.content %>
+          <%# #gsub does not work well for now because we now have the ability to search for many words with complex queries: %>
+          <%# .gsub(/(#{@query})/i, "<mark>#{$1}</mark>") %>
         </dd>
       <%- end %>
     </dl>

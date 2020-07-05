@@ -15,7 +15,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = Tag.find(params[:id])
+    @tag = current_user.tags.find(params[:id])
     version = current_version
     excerpts = @tag.excerpts
     @excerpts_with_text = []
@@ -48,7 +48,7 @@ class TagsController < ApplicationController
                   book = Book.find_by_number(params[:book])
                   chapter = book.chapters.find_by_number(params[:chapter])
                   verses = chapter.verses.where(number: params[:verses].map(&:to_i))
-                  ex = Excerpt.new
+                  ex = Excerpt.new(user_id: current_user.id)
                   ex.verses = verses
                 end
                 ex
@@ -57,7 +57,7 @@ class TagsController < ApplicationController
     if params[:tags].kind_of?(Array)
       tags = []
       params[:tags].each do |tag|
-        db_tag = Tag.find_by_name(tag)
+        db_tag = current_user.tags.find_by_name(tag)
         unless db_tag
           db_tag = Tag.new(name: tag, user_id: current_user.id)
           db_tag.save
@@ -78,7 +78,7 @@ class TagsController < ApplicationController
   end
 
   def delete
-    Tag.find(params[:id]).destroy
+    current_user.tags.find(params[:id]).destroy
     redirect_to tags_index_url
   end
 

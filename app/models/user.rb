@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :tags
+  has_many :excerpt_verses
+  has_many :excerpts, through: :excerpt_verses
 end

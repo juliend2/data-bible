@@ -26,7 +26,7 @@
           </td>
           <%- @versions.each do |version| %>
             <td>
-              <%- if verse.starts_an_excerpt? %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
+              <%- if verse.starts_an_excerpt? && current_user %><%- verse.excerpts_with_verse_as_first.each do |ex| %><%- colors_map[ex.id] = colors.pop unless colors_map.has_key?(ex.id) %><%- color = colors_map[ex.id] %><a
                       href="#"
                       data-excerpt_id="<%= ex.id %>"
                       data-excerpt_color="<%= color %>"
@@ -40,7 +40,7 @@
                 id="verse-<%= verse.number %>"
                 class="js-verse__text  verse__text <%= verse.excerpt_ids.map{|ei| "js-in-excerpt-#{ei}" }.join(' ') %>"
                 ><%= verse_version ? verse_version.content : "[N/A]*" %></span>
-              <%- if verse.ends_an_excerpt? %>
+              <%- if verse.ends_an_excerpt? && current_user %>
                 <%- verse.excerpts_with_verse_as_last.each do |ex| %><%- color = colors_map[ex.id] %><a
                     href="#"
                     data-excerpt_id="<%= ex.id %>"

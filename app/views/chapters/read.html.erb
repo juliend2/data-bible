@@ -41,6 +41,7 @@
   </div>
   <hr/>
   <div class="excerpt-edit">
+    <%- if current_user %>
     <fieldset class="js-excerpts-edit-box"  style="display: none;"><%# style="display: none;" %>
       <h2><%= t 'excerpt' %></h2>
       <p>
@@ -65,6 +66,7 @@
         </p>
       </div>
     </div>
+    <%- end %>
     <%- if current_user %>
     <form action="<%= tags_assign_path %>" class="js-excerpt-note-edit">
       <div class="js-assign-tag-to-verses">

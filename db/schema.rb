@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200705021325) do
+ActiveRecord::Schema.define(version: 20200705023504) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name",        null: false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20200705021325) do
     t.integer  "excerpt_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "excerpt_verses", ["excerpt_id"], name: "index_excerpt_verses_on_excerpt_id"

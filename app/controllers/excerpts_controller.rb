@@ -15,7 +15,12 @@ class ExcerptsController < ApplicationController
   end
 
   def notes
-    @excerpts_with_notes = Excerpt.where.not(note: [nil, ''])
+    @excerpts_with_notes =
+      if current_user
+        current_user.excerpts.where.not(note: [nil, ''])
+      else
+        []
+      end
   end
 
   def delete
