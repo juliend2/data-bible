@@ -2,9 +2,11 @@
 
 <dl class="content word-clouds full-width">
 <%- @books.each do |book| %>
+  <%- cache book do %>
   <dt class="book"><%= book.name %></dt>
   <dd class="word-cloud-for-book">
     <%= raw word_cloud(book.id, book.words_by_popularity(current_version)) %>
   </dd>
+  <%- end %>
 <%- end %>
 </dl>

@@ -1,12 +1,17 @@
 class TagsController < ApplicationController
 
   def index
-    @tags = Tag.all.
-      map{|tag| [tag, tag.name.parameterize] }.
-      sort{|x,y| x.last <=> y.last }.
-      group_by {|tag| tag.last[0] }.
-      map{|letter, group| [letter, group.map(&:first)] }.
-      to_h
+    @tags = 
+      if current_user
+        current_user.tags.all.
+          map{|tag| [tag, tag.name.parameterize] }.
+          sort{|x,y| x.last <=> y.last }.
+          group_by {|tag| tag.last[0] }.
+          map{|letter, group| [letter, group.map(&:first)] }.
+          to_h
+      else
+        {}
+      end
   end
 
   def show
@@ -54,7 +59,7 @@ class TagsController < ApplicationController
       params[:tags].each do |tag|
         db_tag = Tag.find_by_name(tag)
         unless db_tag
-          db_tag = Tag.new(name: tag)
+          db_tag = Tag.new(name: tag, user_id: current_user.id)
           db_tag.save
         end
         tags << db_tag

@@ -65,6 +65,7 @@
         </p>
       </div>
     </div>
+    <%- if current_user %>
     <form action="<%= tags_assign_path %>" class="js-excerpt-note-edit">
       <div class="js-assign-tag-to-verses">
         <h3><%= t 'assign_tag_to_verses' %></h3>
@@ -88,6 +89,7 @@
         </p>
       </div>
     </form>
+    <%- end %>
   </div>
 </div>
 
