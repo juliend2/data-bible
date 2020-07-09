@@ -1,4 +1,6 @@
 class ExcerptsController < ApplicationController
+  before_action :authenticate_user!, only: [:delete]
+
   def index
   end
 
