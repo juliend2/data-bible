@@ -57,7 +57,6 @@
 
 ### Fonctionnalités futures
 
-* Page qui liste les livres et chapitres par auteur présumé
 * Page qui liste les livres et chapitres par époque présumée de rédaction (ordre chronologique)
 * Ajouter l'index de concordances de [Strong](https://en.wikipedia.org/wiki/Strong%27s_Concordance) sur les mots qui s'appliquent. Au moins pour la traduction Louis Segond qui est actuellement disponible.
 * Outil de recherche plus avancé, entre autre pour:
