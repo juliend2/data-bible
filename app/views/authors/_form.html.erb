@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
 <%= form_for(@author) do |f| %>
   <% if @author.errors.any? %>
     <div id="error_explanation">
@@ -23,3 +26,7 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("author_description") });
+</script>

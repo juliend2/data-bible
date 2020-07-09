@@ -8,7 +8,7 @@
   <p>
     <strong>Description:</strong>
     <div>
-    <%= @author.description %>
+    <%= raw Slodown::Formatter.new(@author.description).complete.to_s %>
     </div>
   </p>
   <%= link_to 'Edit', edit_author_path(@author) %> |
