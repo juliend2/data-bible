@@ -49,8 +49,9 @@ class TagsController < ApplicationController
                   book = Book.find_by_number(params[:book])
                   chapter = book.chapters.find_by_number(params[:chapter])
                   verses = chapter.verses.where(number: params[:verses].map(&:to_i))
-                  ex = Excerpt.new(user_id: current_user.id)
+                  ex = Excerpt.new
                   ex.verses = verses
+                  ex.excerpt_verses.map{|ev| ev.user_id = current_user.id }
                 end
                 ex
               end
