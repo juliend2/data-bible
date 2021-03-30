@@ -95,7 +95,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.5)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
